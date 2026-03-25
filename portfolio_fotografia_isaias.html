@@ -1,0 +1,845 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Isaías Natanael — Fotografia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./style.css" />
+
+    <!-- Estilos temporários para as imagens ficarem corretas no lugar dos gradientes -->
+    <style>
+      .cat-bg img,
+      .portfolio-img img,
+      .about-photo-main img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .about-photo-main {
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursorDot"><div class="cursor-dot"></div></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- NAV -->
+    <nav id="navbar">
+      <a href="#" class="logo">Isaías <span>Natanael</span></a>
+      <ul class="nav-links">
+        <li><a href="#categorias">Trabalhos</a></li>
+        <li><a href="#portfolio">Portfólio</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+      </ul>
+      <a href="#contato" class="nav-contact-btn">Agendar Sessão</a>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-slideshow">
+        <div
+          class="slide slide-1 active"
+          style="
+            background-image: url(&quot;https://images.unsplash.com/photo-1519741497674-611481863552?w=1600&q=80&quot;);
+            background-size: cover;
+            background-position: center;
+          "
+        ></div>
+        <div
+          class="slide slide-2"
+          style="
+            background-image: url(&quot;https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1600&q=80&quot;);
+            background-size: cover;
+            background-position: center;
+          "
+        ></div>
+        <div
+          class="slide slide-3"
+          style="
+            background-image: url(&quot;https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=1600&q=80&quot;);
+            background-size: cover;
+            background-position: center;
+          "
+        ></div>
+      </div>
+      <div class="grain"></div>
+
+      <div class="hero-content">
+        <p class="hero-eyebrow">Fotografia de autor — Porto Alegre, RS</p>
+        <h1 class="hero-title">
+          Momentos que<br />
+          <em>resistem</em><br />
+          ao tempo
+        </h1>
+        <p class="hero-sub">
+          Casamentos, eventos corporativos e fotografia fine art. Cada imagem é
+          uma história que merece ser contada com precisão e sensibilidade.
+        </p>
+      </div>
+
+      <div class="slide-counter">
+        <strong id="currentSlide">01</strong> / 03
+      </div>
+
+      <div class="hero-scroll">
+        <div class="scroll-line"></div>
+        <span>Explorar</span>
+      </div>
+    </section>
+
+    <!-- CATEGORIAS -->
+    <section id="categorias">
+      <div class="categories-header reveal">
+        <div>
+          <p class="section-eyebrow">O que faço</p>
+          <h2 class="section-title">Especialidades</h2>
+        </div>
+        <a
+          href="#portfolio"
+          style="
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--warm-gray);
+            text-decoration: none;
+          "
+          >Ver todos os trabalhos →</a
+        >
+      </div>
+
+      <div class="categories-grid reveal">
+        <!-- CASAMENTOS (large) -->
+        <div class="cat-card">
+          <div class="cat-bg cat-wedding" style="height: 100%">
+            <img
+              src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&q=80"
+              alt="Casamentos"
+            />
+          </div>
+          <div class="cat-overlay"></div>
+          <span class="cat-count">48 projetos</span>
+          <div class="cat-content">
+            <p class="cat-tag">01 — Especialidade</p>
+            <h3 class="cat-name">Casamentos</h3>
+            <a href="#" class="cat-link">
+              Ver galeria
+              <span class="cat-arrow"></span>
+            </a>
+          </div>
+        </div>
+
+        <!-- CORPORATIVO -->
+        <div class="cat-card">
+          <div class="cat-bg cat-corporate" style="height: 100%">
+            <img
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80"
+              alt="Corporativo"
+            />
+          </div>
+          <div class="cat-overlay"></div>
+          <span class="cat-count">31 projetos</span>
+          <div class="cat-content">
+            <p class="cat-tag">02 — Especialidade</p>
+            <h3 class="cat-name">Corporativo</h3>
+            <a href="#" class="cat-link">
+              Ver galeria
+              <span class="cat-arrow"></span>
+            </a>
+          </div>
+        </div>
+
+        <!-- FINE ART -->
+        <div class="cat-card">
+          <div class="cat-bg cat-fineart" style="height: 100%">
+            <img
+              src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=600&q=80"
+              alt="Fine Art"
+            />
+          </div>
+          <div class="cat-overlay"></div>
+          <span class="cat-count">22 projetos</span>
+          <div class="cat-content">
+            <p class="cat-tag">03 — Especialidade</p>
+            <h3 class="cat-name">Fine Art</h3>
+            <a href="#" class="cat-link">
+              Ver galeria
+              <span class="cat-arrow"></span>
+            </a>
+          </div>
+        </div>
+
+        <!-- ENSAIOS -->
+        <div class="cat-card">
+          <div class="cat-bg cat-event-sm1" style="height: 100%">
+            <img
+              src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600&q=80"
+              alt="Ensaios"
+            />
+          </div>
+          <div class="cat-overlay"></div>
+          <span class="cat-count">19 projetos</span>
+          <div class="cat-content">
+            <p class="cat-tag">04 — Especialidade</p>
+            <h3 class="cat-name">Ensaios</h3>
+            <a href="#" class="cat-link"
+              >Ver galeria <span class="cat-arrow"></span
+            ></a>
+          </div>
+        </div>
+
+        <!-- EVENTOS -->
+        <div class="cat-card">
+          <div class="cat-bg" style="height: 100%">
+            <img
+              src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80"
+              alt="Eventos"
+            />
+          </div>
+          <div class="cat-overlay"></div>
+          <span class="cat-count">14 projetos</span>
+          <div class="cat-content">
+            <p class="cat-tag">05 — Especialidade</p>
+            <h3 class="cat-name">Eventos</h3>
+            <a href="#" class="cat-link"
+              >Ver galeria <span class="cat-arrow"></span
+            ></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio">
+      <div class="portfolio-header reveal">
+        <div>
+          <p class="section-eyebrow">Seleção de trabalhos</p>
+          <h2 class="section-title">Portfólio <em>Recente</em></h2>
+        </div>
+        <div class="filter-tabs">
+          <button
+            class="filter-btn active"
+            onclick="filterPortfolio(this, 'todos')"
+          >
+            Todos
+          </button>
+          <button
+            class="filter-btn"
+            onclick="filterPortfolio(this, 'casamento')"
+          >
+            Casamentos
+          </button>
+          <button
+            class="filter-btn"
+            onclick="filterPortfolio(this, 'corporativo')"
+          >
+            Corporativo
+          </button>
+          <button class="filter-btn" onclick="filterPortfolio(this, 'fineart')">
+            Fine Art
+          </button>
+        </div>
+      </div>
+
+      <div class="portfolio-masonry reveal">
+        <div class="portfolio-item" data-cat="casamento">
+          <div style="height: 420px" class="portfolio-img">
+            <img
+              src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&q=80"
+              alt="Ana & Pedro"
+              style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+              "
+            />
+          </div>
+          <div class="portfolio-overlay">
+            <div class="portfolio-info">
+              <h3>Ana & Pedro</h3>
+              <p>Casamento — Porto Alegre</p>
+            </div>
+          </div>
+        </div>
+        <div class="portfolio-item" data-cat="fineart">
+          <div style="height: 280px" class="portfolio-img">
+            <img
+              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80"
+              alt="Serra Gaúcha"
+              style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+              "
+            />
+          </div>
+          <div class="portfolio-overlay">
+            <div class="portfolio-info">
+              <h3>Serra Gaúcha</h3>
+              <p>Fine Art — Gramado</p>
+            </div>
+          </div>
+        </div>
+        <div class="portfolio-item" data-cat="corporativo">
+          <div style="height: 320px" class="portfolio-img">
+            <img
+              src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&q=80"
+              alt="Cúpula Tech"
+              style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+              "
+            />
+          </div>
+          <div class="portfolio-overlay">
+            <div class="portfolio-info">
+              <h3>Cúpula Tech</h3>
+              <p>Corporativo — POA</p>
+            </div>
+          </div>
+        </div>
+        <div class="portfolio-item" data-cat="casamento">
+          <div style="height: 360px" class="portfolio-img">
+            <img
+              src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&q=80"
+              alt="Mariana & Rafael"
+              style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+              "
+            />
+          </div>
+          <div class="portfolio-overlay">
+            <div class="portfolio-info">
+              <h3>Mariana & Rafael</h3>
+              <p>Casamento — Bento</p>
+            </div>
+          </div>
+        </div>
+        <div class="portfolio-item" data-cat="fineart">
+          <div style="height: 480px" class="portfolio-img">
+            <img
+              src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=600&q=80"
+              alt="Azul Profundo"
+              style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+              "
+            />
+          </div>
+          <div class="portfolio-overlay">
+            <div class="portfolio-info">
+              <h3>Azul Profundo</h3>
+              <p>Fine Art — Capão</p>
+            </div>
+          </div>
+        </div>
+        <div class="portfolio-item" data-cat="corporativo">
+          <div style="height: 260px" class="portfolio-img">
+            <img
+              src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&q=80"
+              alt="Fórum Empreender"
+              style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+              "
+            />
+          </div>
+          <div class="portfolio-overlay">
+            <div class="portfolio-info">
+              <h3>Fórum Empreender</h3>
+              <p>Corporativo — Caxias</p>
+            </div>
+          </div>
+        </div>
+        <div class="portfolio-item" data-cat="casamento">
+          <div style="height: 300px" class="portfolio-img">
+            <img
+              src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&q=80"
+              alt="Júlia & Thiago"
+              style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+              "
+            />
+          </div>
+          <div class="portfolio-overlay">
+            <div class="portfolio-info">
+              <h3>Júlia & Thiago</h3>
+              <p>Casamento — Gramado</p>
+            </div>
+          </div>
+        </div>
+        <div class="portfolio-item" data-cat="fineart">
+          <div style="height: 380px" class="portfolio-img">
+            <img
+              src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=600&q=80"
+              alt="Névoa de Inverno"
+              style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+              "
+            />
+          </div>
+          <div class="portfolio-overlay">
+            <div class="portfolio-info">
+              <h3>Névoa de Inverno</h3>
+              <p>Fine Art — São Marcos</p>
+            </div>
+          </div>
+        </div>
+        <div class="portfolio-item" data-cat="corporativo">
+          <div style="height: 300px" class="portfolio-img">
+            <img
+              src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=600&q=80"
+              alt="Abertura FIERGS"
+              style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+              "
+            />
+          </div>
+          <div class="portfolio-overlay">
+            <div class="portfolio-info">
+              <h3>Abertura FIERGS</h3>
+              <p>Corporativo — Porto Alegre</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 64px" class="reveal">
+        <a
+          href="#"
+          style="
+            display: inline-block;
+            font-size: 10px;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--cream);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 16px 40px;
+            text-decoration: none;
+            transition: all 0.3s;
+          "
+          onmouseover="
+            this.style.borderColor = 'var(--accent)';
+            this.style.color = 'var(--accent-light)';
+          "
+          onmouseout="
+            this.style.borderColor = 'rgba(255,255,255,0.2)';
+            this.style.color = 'var(--cream)';
+          "
+        >
+          Carregar mais trabalhos
+        </a>
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre">
+      <div class="about-photo reveal">
+        <div class="about-photo-main">
+          <img
+            src="https://images.unsplash.com/photo-1552168324-d612d77725e3?w=800&q=80"
+            alt="Isaías Natanael fotógrafo"
+          />
+        </div>
+        <div class="about-badge">
+          <span class="about-badge-num">8+</span>
+          <span class="about-badge-txt">anos de experiência</span>
+        </div>
+      </div>
+      <div class="about-text reveal reveal-delay-2">
+        <p class="section-eyebrow">O fotógrafo</p>
+        <h2 class="section-title">
+          Uma história contada<br />através de <em>luz</em>
+        </h2>
+        <div class="divider"></div>
+        <p>
+          Cada fotografia é uma decisão consciente — de enquadramento, luz,
+          tempo. Meu trabalho nasce do encontro entre técnica e sensibilidade.
+        </p>
+        <p>
+          Baseado em Porto Alegre, atendo em todo o Brasil e exterior. Seja num
+          casamento em Gramado ou num evento corporativo no coração da cidade, o
+          compromisso é sempre o mesmo: entregar imagens que emocionam.
+        </p>
+        <div class="about-stats">
+          <div>
+            <div class="stat-num">134</div>
+            <div class="stat-label">Eventos realizados</div>
+          </div>
+          <div>
+            <div class="stat-num">98%</div>
+            <div class="stat-label">Clientes satisfeitos</div>
+          </div>
+          <div>
+            <div class="stat-num">12</div>
+            <div class="stat-label">Países fotografados</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEPOIMENTOS -->
+    <section id="depoimentos">
+      <div style="text-align: center" class="reveal">
+        <p class="section-eyebrow">O que dizem</p>
+        <h2 class="section-title">Depoimentos dos <em>clientes</em></h2>
+      </div>
+
+      <div class="testimonials-track-wrap">
+        <div class="testimonials-track" id="testimonialsTrack">
+          <!-- original -->
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+            </div>
+            <p class="testimonial-quote">
+              "O Fulano captou cada momento com uma sensibilidade que nos
+              surpreendeu. As fotos são simplesmente mágicas — cada vez que
+              olhamos, nos transportamos de volta àquele dia."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">A</div>
+              <div>
+                <p class="author-name">Ana & Pedro</p>
+                <p class="author-event">Casamento · Porto Alegre</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+            </div>
+            <p class="testimonial-quote">
+              "Contratamos para fotografar nosso evento corporativo e o
+              resultado foi impressionante. Profissionalismo e criatividade que
+              elevaram a percepção da nossa marca."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">R</div>
+              <div>
+                <p class="author-name">Roberto Alves</p>
+                <p class="author-event">Evento Corporativo · Caxias do Sul</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+            </div>
+            <p class="testimonial-quote">
+              "As fotos fine art que fez das paisagens da Serra são obras de
+              arte. Já a terceira vez que trabalhamos juntos. Altamente
+              recomendado."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">C</div>
+              <div>
+                <p class="author-name">Camila Moretti</p>
+                <p class="author-event">Fine Art · Gramado</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+            </div>
+            <p class="testimonial-quote">
+              "Desde o primeiro contato, ficou claro que o Fulano estava
+              totalmente comprometido em capturar nossa história. O resultado
+              superou todas as expectativas."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">J</div>
+              <div>
+                <p class="author-name">Júlia & Thiago</p>
+                <p class="author-event">Casamento · Gramado</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+            </div>
+            <p class="testimonial-quote">
+              "Incrível a capacidade de encontrar a luz certa em qualquer
+              situação. As fotos do nosso evento corporativo ficaram com uma
+              qualidade editorial impressionante."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">M</div>
+              <div>
+                <p class="author-name">Marina Souza</p>
+                <p class="author-event">Evento · Porto Alegre</p>
+              </div>
+            </div>
+          </div>
+          <!-- duplicado para loop contínuo -->
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+            </div>
+            <p class="testimonial-quote">
+              "O Fulano captou cada momento com uma sensibilidade que nos
+              surpreendeu. As fotos são simplesmente mágicas — cada vez que
+              olhamos, nos transportamos de volta àquele dia."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">A</div>
+              <div>
+                <p class="author-name">Ana & Pedro</p>
+                <p class="author-event">Casamento · Porto Alegre</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+            </div>
+            <p class="testimonial-quote">
+              "Contratamos para fotografar nosso evento corporativo e o
+              resultado foi impressionante. Profissionalismo e criatividade que
+              elevaram a percepção da nossa marca."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">R</div>
+              <div>
+                <p class="author-name">Roberto Alves</p>
+                <p class="author-event">Evento Corporativo · Caxias do Sul</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+            </div>
+            <p class="testimonial-quote">
+              "As fotos fine art que fez das paisagens da Serra são obras de
+              arte. Já a terceira vez que trabalhamos juntos. Altamente
+              recomendado."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">C</div>
+              <div>
+                <p class="author-name">Camila Moretti</p>
+                <p class="author-event">Fine Art · Gramado</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+            </div>
+            <p class="testimonial-quote">
+              "Desde o primeiro contato, ficou claro que o Fulano estava
+              totalmente comprometido em capturar nossa história. O resultado
+              superou todas as expectativas."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">J</div>
+              <div>
+                <p class="author-name">Júlia & Thiago</p>
+                <p class="author-event">Casamento · Gramado</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+            </div>
+            <p class="testimonial-quote">
+              "Incrível a capacidade de encontrar a luz certa em qualquer
+              situação. As fotos do nosso evento corporativo ficaram com uma
+              qualidade editorial impressionante."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">M</div>
+              <div>
+                <p class="author-name">Marina Souza</p>
+                <p class="author-event">Evento · Porto Alegre</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato">
+      <div class="reveal">
+        <p class="section-eyebrow">Vamos conversar</p>
+        <h2 class="section-title">Agende sua<br /><em>sessão</em></h2>
+        <div class="divider"></div>
+        <div class="contact-details">
+          <div class="contact-detail">
+            <div class="detail-icon">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"
+                />
+              </svg>
+            </div>
+            <div>
+              <p class="detail-label">WhatsApp</p>
+              <p class="detail-value">+55 51 9 9999-9999</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="detail-icon">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+            </div>
+            <div>
+              <p class="detail-label">Email</p>
+              <p class="detail-value">contato@fulanodetal.com.br</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="detail-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </div>
+            <div>
+              <p class="detail-label">Localização</p>
+              <p class="detail-value">Porto Alegre, RS — Brasil</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap reveal reveal-delay-2">
+        <form onsubmit="return false;">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nome</label>
+              <input type="text" placeholder="Seu nome" />
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="seu@email.com" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Telefone</label>
+              <input type="tel" placeholder="(51) 9 0000-0000" />
+            </div>
+            <div class="form-group">
+              <label>Tipo de evento</label>
+              <select>
+                <option value="" disabled selected>Selecione...</option>
+                <option>Casamento</option>
+                <option>Corporativo</option>
+                <option>Fine Art / Paisagem</option>
+                <option>Ensaio de casal</option>
+                <option>Evento social</option>
+                <option>Outro</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Data prevista</label>
+            <input type="text" placeholder="Ex: Março de 2026" />
+          </div>
+          <div class="form-group">
+            <label>Mensagem</label>
+            <textarea
+              placeholder="Conte um pouco sobre seu evento, local, expectativas..."
+            ></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Enviar mensagem</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-logo">Fulano <span>de Tal</span></div>
+      <p class="footer-copy">
+        © 2026 Fulano de Tal Fotografia — Todos os direitos reservados
+      </p>
+      <div class="footer-social">
+        <a href="#">Instagram</a>
+        <a href="#">Behance</a>
+        <a href="#">WhatsApp</a>
+      </div>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
