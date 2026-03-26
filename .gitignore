@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# Ambiente virtual
+venv/
+env/
+.env
+.env.*
+
+# Django
+*.log
+db.sqlite3
+media/
+
+# Vite / React
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.*
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Sistema operacional (Windows)
+Thumbs.db
+Desktop.ini
+ehthumbs.db
+
+# Sistema operacional (Mac)
+.DS_Store
