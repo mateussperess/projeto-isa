@@ -1,0 +1,13 @@
+@use 'variables' as *;
+
+.container {
+  width: 100%;
+  max-width: $bp-desktop;
+  margin: 0 auto;
+  padding: 0 $spacing-lg;
+}
+
+.page {
+  min-height: 100vh;
+  padding: $spacing-xl 0;
+}

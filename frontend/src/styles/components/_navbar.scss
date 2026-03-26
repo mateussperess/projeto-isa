@@ -1,0 +1,195 @@
+@use '../variables' as *;
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 28px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: $transition;
+
+  &.scrolled {
+    background: rgba($dark, 0.92);
+    backdrop-filter: blur(12px);
+    padding: 18px 60px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+}
+
+.logo {
+  font-family: $serif;
+  font-size: 22px;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: $cream;
+
+  span {
+    color: $accent-light;
+    font-style: italic;
+  }
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+
+  a {
+    font-family: $sans;
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: $warm-gray;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $accent-light;
+    }
+  }
+}
+
+.nav-contact-btn {
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $cream;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 10px 22px;
+  transition: $transition;
+  cursor: none;
+
+  &:hover {
+    background: $accent;
+    border-color: $accent;
+    color: $white;
+  }
+}
+
+// ─── HAMBURGER ────────────────────────────────────────────────────
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 200;
+
+  span {
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: $cream;
+    transition: $transition;
+  }
+
+  &.open {
+    span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    span:nth-child(2) {
+      opacity: 0;
+    }
+
+    span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+  }
+}
+
+// ─── DRAWER MOBILE ────────────────────────────────────────────────
+.nav-drawer {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba($dark, 0.97);
+  z-index: 150;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+
+  &.open {
+    display: flex;
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  a {
+    font-family: $serif;
+    font-size: 36px;
+    font-weight: 300;
+    color: $cream;
+    letter-spacing: 0.05em;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $accent-light;
+    }
+  }
+
+  .drawer-cta {
+    font-family: $sans;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: $accent-light;
+    border: 1px solid $accent;
+    padding: 14px 36px;
+    margin-top: 12px;
+  }
+}
+
+// ─── RESPONSIVO ───────────────────────────────────────────────────
+@media (max-width: $bp-tablet) {
+  nav {
+    padding: 24px 40px;
+  }
+
+  nav.scrolled {
+    padding: 16px 40px;
+  }
+
+  .nav-links {
+    gap: 28px;
+  }
+}
+
+@media (max-width: $bp-mobile) {
+  nav {
+    padding: 20px 24px;
+  }
+
+  nav.scrolled {
+    padding: 16px 24px;
+  }
+
+  .nav-links,
+  .nav-contact-btn {
+    display: none;
+  }
+
+  .nav-hamburger {
+    display: flex;
+  }
+}
+
+@media (max-width: $bp-small) {
+  nav {
+    padding: 16px 20px;
+  }
+
+  nav.scrolled {
+    padding: 12px 20px;
+  }
+}

@@ -1,0 +1,61 @@
+@use '../variables' as *;
+
+.evento-card {
+  cursor: pointer;
+  background: $color-bg-card;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    opacity: 0.85;
+  }
+
+  &__capa {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  &__capa--placeholder {
+    aspect-ratio: 4 / 3;
+    background: $color-bg-card;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-text-muted;
+    font-size: 0.85rem;
+  }
+
+  &__info {
+    padding: $spacing-md;
+  }
+
+  &__titulo {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__meta {
+    font-size: 0.8rem;
+    color: $color-text-muted;
+    display: flex;
+    gap: $spacing-md;
+  }
+}
+
+.eventos-grid {
+  display: grid;
+  gap: $spacing-lg;
+  grid-template-columns: repeat($grid-cols-mobile, 1fr);
+
+  @media (min-width: $bp-tablet) {
+    grid-template-columns: repeat($grid-cols-tablet, 1fr);
+  }
+
+  @media (min-width: $bp-desktop) {
+    grid-template-columns: repeat($grid-cols-desktop, 1fr);
+  }
+}

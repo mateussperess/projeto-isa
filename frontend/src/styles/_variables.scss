@@ -1,0 +1,21 @@
+// ─── CORES ────────────────────────────────────────────────────────
+$cream: #f5f2ee;
+$sand: #e8e2d9;
+$warm-gray: #9c9089;
+$dark: #1a1714;
+$dark-mid: #2e2a27;
+$accent: #8b6f4e;
+$accent-light: #c4a882;
+$white: #fdfcfb;
+
+// ─── TIPOGRAFIA ───────────────────────────────────────────────────
+$serif: "Cormorant Garamond", Georgia, serif;
+$sans: "Jost", sans-serif;
+
+// ─── TRANSIÇÃO GLOBAL ─────────────────────────────────────────────
+$transition: all 0.45s cubic-bezier(0.25, 0.1, 0.25, 1);
+
+// ─── BREAKPOINTS ──────────────────────────────────────────────────
+$bp-tablet: 1024px;
+$bp-mobile: 768px;
+$bp-small: 480px;
