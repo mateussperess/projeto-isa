@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import api from "../api/axios";
+import "../styles/pages/eventos.scss"
 
 export default function Evento() {
   const { id } = useParams();
@@ -19,20 +20,39 @@ export default function Evento() {
   if (!evento) return <p>Evento não encontrado.</p>;
 
   return (
-    <main>
-      <button onClick={() => navigate(-1)}>← Voltar</button>
-      <h1>{evento.titulo}</h1>
-      <p>{evento.descricao}</p>
-      <div>
-        {evento.fotos.map((foto) => (
-          <img
-            key={foto.id}
-            src={foto.imagem}
-            alt={foto.legenda || evento.titulo}
-            style={{ width: "300px", aspectRatio: "4/3", objectFit: "cover" }}
-          />
-        ))}
-      </div>
-    </main>
+    <>
+      <main className="ev-root">
+        <button className="ev-back" onClick={() => navigate(-1)}>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path
+              d="M9 2L4 7L9 12"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          Voltar
+        </button>
+
+        <div className="ev-header">
+          <h1 className="ev-title">{evento.titulo}</h1>
+        </div>
+        <p className="ev-desc">{evento.descricao}</p>
+
+        <div className="ev-gallery">
+          {evento.fotos.map((foto) => (
+            <div key={foto.id} className="ev-photo">
+              <img src={foto.imagem} alt={foto.legenda || evento.titulo} />
+              {foto.legenda && (
+                <div className="ev-photo-overlay">
+                  <span className="ev-photo-caption">{foto.legenda}</span>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </main>
+    </>
   );
 }

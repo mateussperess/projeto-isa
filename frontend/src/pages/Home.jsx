@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api/axios";
-import useCursor from "../hooks/useCursor";
 import useReveal from "../hooks/useReveal";
 import Navbar from "../components/NavBar";
 import Hero from "../components/Hero";
@@ -82,7 +81,6 @@ export default function Home() {
   const [filtro, setFiltro] = useState("todos");
   const navigate = useNavigate();
 
-  useCursor();
   useReveal();
 
   useEffect(() => {
@@ -91,12 +89,6 @@ export default function Home() {
 
   return (
     <>
-      {/* Cursor */}
-      <div className="cursor" id="cursorDot">
-        <div className="cursor-dot" />
-      </div>
-      <div className="cursor-ring" id="cursorRing" />
-
       <Navbar />
       <Hero />
 

@@ -17,7 +17,6 @@ body {
   background: $dark;
   color: $cream;
   overflow-x: hidden;
-  cursor: none;
 
   @media (max-width: $bp-tablet) {
     cursor: auto;

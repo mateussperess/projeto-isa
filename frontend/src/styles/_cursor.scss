@@ -1,20 +1,27 @@
-@use 'variables' as *;
+@use "variables" as *;
 
+// Evento.scss (ajuste no cursor)
 .cursor {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 9999;
   pointer-events: none;
+  // ⚠ Remove qualquer transform daqui — quem move é a camada interna
 }
 
 .cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 6px;
   height: 6px;
   background: $accent-light;
   border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s;
+  // Centraliza E posiciona via will-change pra não conflitar
+  translate: -50% -50%; // propriedade separada do shorthand transform
+  will-change: transform;
+  z-index: 9999;
 }
 
 .cursor-ring {
@@ -25,10 +32,14 @@
   height: 36px;
   border: 1px solid rgba($accent-light, 0.4);
   border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: transform 0.25s ease, width 0.3s, height 0.3s, border-color 0.3s;
+  translate: -50% -50%; // idem
+  transition:
+    width 0.3s,
+    height 0.3s,
+    border-color 0.3s;
   pointer-events: none;
   z-index: 9998;
+  will-change: transform;
 
   &.expanded {
     width: 64px;
@@ -38,7 +49,6 @@
 }
 
 @media (max-width: $bp-tablet) {
-
   .cursor,
   .cursor-ring {
     display: none;
