@@ -14,8 +14,8 @@ html {
 
 body {
   font-family: $sans;
-  background: $dark;
-  color: $cream;
+  background: $brand-cream;
+  color: $brand-charcoal;
   overflow-x: hidden;
 
   @media (max-width: $bp-tablet) {

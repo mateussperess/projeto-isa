@@ -1,5 +1,11 @@
 from django.contrib import admin
-from .models import Evento, Foto
+from .models import Evento, Foto, Categoria
+
+@admin.register(Categoria)
+class CategoriaAdmin(admin.ModelAdmin):
+  list_display = ['nome', 'slug']
+  prepopulated_fields = {'slug': ('nome',)}
+  search_fields = ['nome']
 
 class FotoInline(admin.TabularInline):
   model = Foto
@@ -9,8 +15,8 @@ class FotoInline(admin.TabularInline):
 @admin.register(Evento)
 class EventoAdmin(admin.ModelAdmin):
   inlines = [FotoInline]
-  list_display = ['titulo', 'data', 'total_fotos', 'criado_em']
-  list_filter = ['data']
+  list_display = ['titulo', 'categoria', 'data', 'total_fotos', 'criado_em']
+  list_filter = ['categoria', 'data']
   search_fields = ['titulo', 'descricao']
   date_hierarchy = 'data'
 

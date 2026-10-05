@@ -1,841 +1,277 @@
-<!doctype html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Isaías Natanael — Fotografia</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400&display=swap"
-      rel="stylesheet"
-    />
-
-    <link rel="stylesheet" href="./style.css" />
-
-    <!-- Estilos temporários para as imagens ficarem corretas no lugar dos gradientes -->
-    <style>
-      .cat-bg img,
-      .portfolio-img img,
-      .about-photo-main img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Isaías Natanael — Galeria de Fotos & Fotografia de Eventos</title>
+  
+  <!-- SEO Tags -->
+  <meta name="description" content="Galeria de fotos e cobertura documental de eventos corporativos, festivais, galas, retratos e ensaios por Isaías Natanael.">
+  
+  <!-- Google Fonts: Outfit (Display) & Plus Jakarta Sans (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#22201E',          /* Pedra Escura / Grafite */
+              terracotta: '#B89379',    /* Bronze / Terracota Pastel */
+              terracottalight: '#E8DFD5',
+              cream: '#FAF7F4',         /* Off-White Linho */
+              linen: '#F3ECE4',         /* Linho Areia */
+              charcoal: '#33302E',      /* Carvão suave para texto */
+              muted: '#7A736E',         /* Taupe para legendas */
+            }
+          },
+          fontFamily: {
+            display: ['"Outfit"', 'system-ui', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          }
+        }
       }
-      .about-photo-main {
-        overflow: hidden;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- NAV -->
-    <nav id="navbar">
-      <a href="#" class="logo">Isaías <span>Natanael</span></a>
-      <ul class="nav-links">
-        <li><a href="#categorias">Trabalhos</a></li>
-        <li><a href="#portfolio">Portfólio</a></li>
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#depoimentos">Depoimentos</a></li>
-      </ul>
-      <a href="#contato" class="nav-contact-btn">Agendar Sessão</a>
-    </nav>
+    }
+  </script>
 
-    <!-- HERO -->
-    <section id="hero">
-      <div class="hero-slideshow">
-        <div
-          class="slide slide-1 active"
-          style="
-            background-image: url(&quot;https://images.unsplash.com/photo-1519741497674-611481863552?w=1600&q=80&quot;);
-            background-size: cover;
-            background-position: center;
-          "
-        ></div>
-        <div
-          class="slide slide-2"
-          style="
-            background-image: url(&quot;https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1600&q=80&quot;);
-            background-size: cover;
-            background-position: center;
-          "
-        ></div>
-        <div
-          class="slide slide-3"
-          style="
-            background-image: url(&quot;https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=1600&q=80&quot;);
-            background-size: cover;
-            background-position: center;
-          "
-        ></div>
-      </div>
-      <div class="grain"></div>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #FAF7F4;
+      color: #33302E;
+    }
+    h1, h2, h3, h4, .font-display {
+      font-family: 'Outfit', sans-serif;
+    }
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .gallery-masonry {
+      column-count: 3;
+      column-gap: 20px;
+    }
+    @media (max-width: 1024px) {
+      .gallery-masonry { column-count: 2; }
+    }
+    @media (max-width: 640px) {
+      .gallery-masonry { column-count: 1; }
+    }
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 20px;
+    }
+    .img-zoom-container {
+      overflow: hidden;
+      border-radius: 3px;
+    }
+    .img-zoom-container img {
+      transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .img-zoom-container:hover img {
+      transform: scale(1.04);
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FAF7F4;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #E8DFD5;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #B89379;
+    }
+  </style>
+</head>
+<body class="bg-brand-cream text-brand-charcoal font-sans antialiased selection:bg-brand-terracotta selection:text-white">
 
-      <div class="hero-content">
-        <p class="hero-eyebrow">Fotografia de autor — Porto Alegre, RS</p>
-        <h1 class="hero-title">
-          Momentos que<br />
-          <em>resistem</em><br />
-          ao tempo
-        </h1>
-        <p class="hero-sub">
-          Casamentos, eventos corporativos e fotografia fine art. Cada imagem é
-          uma história que merece ser contada com precisão e sensibilidade.
-        </p>
-      </div>
-
-      <div class="slide-counter">
-        <strong id="currentSlide">01</strong> / 03
-      </div>
-
-      <div class="hero-scroll">
-        <div class="scroll-line"></div>
-        <span>Explorar</span>
-      </div>
-    </section>
-
-    <!-- CATEGORIAS -->
-    <section id="categorias">
-      <div class="categories-header reveal">
-        <div>
-          <p class="section-eyebrow">O que faço</p>
-          <h2 class="section-title">Especialidades</h2>
-        </div>
-        <a
-          href="#portfolio"
-          style="
-            font-size: 10px;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--warm-gray);
-            text-decoration: none;
-          "
-          >Ver todos os trabalhos →</a
-        >
-      </div>
-
-      <div class="categories-grid reveal">
-        <!-- CASAMENTOS (large) -->
-        <div class="cat-card">
-          <div class="cat-bg cat-wedding" style="height: 100%">
-            <img
-              src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&q=80"
-              alt="Casamentos"
-            />
-          </div>
-          <div class="cat-overlay"></div>
-          <span class="cat-count">48 projetos</span>
-          <div class="cat-content">
-            <p class="cat-tag">01 — Especialidade</p>
-            <h3 class="cat-name">Casamentos</h3>
-            <a href="#" class="cat-link">
-              Ver galeria
-              <span class="cat-arrow"></span>
-            </a>
-          </div>
-        </div>
-
-        <!-- CORPORATIVO -->
-        <div class="cat-card">
-          <div class="cat-bg cat-corporate" style="height: 100%">
-            <img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80"
-              alt="Corporativo"
-            />
-          </div>
-          <div class="cat-overlay"></div>
-          <span class="cat-count">31 projetos</span>
-          <div class="cat-content">
-            <p class="cat-tag">02 — Especialidade</p>
-            <h3 class="cat-name">Corporativo</h3>
-            <a href="#" class="cat-link">
-              Ver galeria
-              <span class="cat-arrow"></span>
-            </a>
-          </div>
-        </div>
-
-        <!-- FINE ART -->
-        <div class="cat-card">
-          <div class="cat-bg cat-fineart" style="height: 100%">
-            <img
-              src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=600&q=80"
-              alt="Fine Art"
-            />
-          </div>
-          <div class="cat-overlay"></div>
-          <span class="cat-count">22 projetos</span>
-          <div class="cat-content">
-            <p class="cat-tag">03 — Especialidade</p>
-            <h3 class="cat-name">Fine Art</h3>
-            <a href="#" class="cat-link">
-              Ver galeria
-              <span class="cat-arrow"></span>
-            </a>
-          </div>
-        </div>
-
-        <!-- ENSAIOS -->
-        <div class="cat-card">
-          <div class="cat-bg cat-event-sm1" style="height: 100%">
-            <img
-              src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600&q=80"
-              alt="Ensaios"
-            />
-          </div>
-          <div class="cat-overlay"></div>
-          <span class="cat-count">19 projetos</span>
-          <div class="cat-content">
-            <p class="cat-tag">04 — Especialidade</p>
-            <h3 class="cat-name">Ensaios</h3>
-            <a href="#" class="cat-link"
-              >Ver galeria <span class="cat-arrow"></span
-            ></a>
-          </div>
-        </div>
-
-        <!-- EVENTOS -->
-        <div class="cat-card">
-          <div class="cat-bg" style="height: 100%">
-            <img
-              src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80"
-              alt="Eventos"
-            />
-          </div>
-          <div class="cat-overlay"></div>
-          <span class="cat-count">14 projetos</span>
-          <div class="cat-content">
-            <p class="cat-tag">05 — Especialidade</p>
-            <h3 class="cat-name">Eventos</h3>
-            <a href="#" class="cat-link"
-              >Ver galeria <span class="cat-arrow"></span
-            ></a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PORTFOLIO -->
-    <section id="portfolio">
-      <div class="portfolio-header reveal">
-        <div>
-          <p class="section-eyebrow">Seleção de trabalhos</p>
-          <h2 class="section-title">Portfólio <em>Recente</em></h2>
-        </div>
-        <div class="filter-tabs">
-          <button
-            class="filter-btn active"
-            onclick="filterPortfolio(this, 'todos')"
-          >
-            Todos
-          </button>
-          <button
-            class="filter-btn"
-            onclick="filterPortfolio(this, 'casamento')"
-          >
-            Casamentos
-          </button>
-          <button
-            class="filter-btn"
-            onclick="filterPortfolio(this, 'corporativo')"
-          >
-            Corporativo
-          </button>
-          <button class="filter-btn" onclick="filterPortfolio(this, 'fineart')">
-            Fine Art
-          </button>
-        </div>
-      </div>
-
-      <div class="portfolio-masonry reveal">
-        <div class="portfolio-item" data-cat="casamento">
-          <div style="height: 420px" class="portfolio-img">
-            <img
-              src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&q=80"
-              alt="Ana & Pedro"
-              style="
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                display: block;
-              "
-            />
-          </div>
-          <div class="portfolio-overlay">
-            <div class="portfolio-info">
-              <h3>Ana & Pedro</h3>
-              <p>Casamento — Porto Alegre</p>
-            </div>
-          </div>
-        </div>
-        <div class="portfolio-item" data-cat="fineart">
-          <div style="height: 280px" class="portfolio-img">
-            <img
-              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80"
-              alt="Serra Gaúcha"
-              style="
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                display: block;
-              "
-            />
-          </div>
-          <div class="portfolio-overlay">
-            <div class="portfolio-info">
-              <h3>Serra Gaúcha</h3>
-              <p>Fine Art — Gramado</p>
-            </div>
-          </div>
-        </div>
-        <div class="portfolio-item" data-cat="corporativo">
-          <div style="height: 320px" class="portfolio-img">
-            <img
-              src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&q=80"
-              alt="Cúpula Tech"
-              style="
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                display: block;
-              "
-            />
-          </div>
-          <div class="portfolio-overlay">
-            <div class="portfolio-info">
-              <h3>Cúpula Tech</h3>
-              <p>Corporativo — POA</p>
-            </div>
-          </div>
-        </div>
-        <div class="portfolio-item" data-cat="casamento">
-          <div style="height: 360px" class="portfolio-img">
-            <img
-              src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&q=80"
-              alt="Mariana & Rafael"
-              style="
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                display: block;
-              "
-            />
-          </div>
-          <div class="portfolio-overlay">
-            <div class="portfolio-info">
-              <h3>Mariana & Rafael</h3>
-              <p>Casamento — Bento</p>
-            </div>
-          </div>
-        </div>
-        <div class="portfolio-item" data-cat="fineart">
-          <div style="height: 480px" class="portfolio-img">
-            <img
-              src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=600&q=80"
-              alt="Azul Profundo"
-              style="
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                display: block;
-              "
-            />
-          </div>
-          <div class="portfolio-overlay">
-            <div class="portfolio-info">
-              <h3>Azul Profundo</h3>
-              <p>Fine Art — Capão</p>
-            </div>
-          </div>
-        </div>
-        <div class="portfolio-item" data-cat="corporativo">
-          <div style="height: 260px" class="portfolio-img">
-            <img
-              src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&q=80"
-              alt="Fórum Empreender"
-              style="
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                display: block;
-              "
-            />
-          </div>
-          <div class="portfolio-overlay">
-            <div class="portfolio-info">
-              <h3>Fórum Empreender</h3>
-              <p>Corporativo — Caxias</p>
-            </div>
-          </div>
-        </div>
-        <div class="portfolio-item" data-cat="casamento">
-          <div style="height: 300px" class="portfolio-img">
-            <img
-              src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&q=80"
-              alt="Júlia & Thiago"
-              style="
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                display: block;
-              "
-            />
-          </div>
-          <div class="portfolio-overlay">
-            <div class="portfolio-info">
-              <h3>Júlia & Thiago</h3>
-              <p>Casamento — Gramado</p>
-            </div>
-          </div>
-        </div>
-        <div class="portfolio-item" data-cat="fineart">
-          <div style="height: 380px" class="portfolio-img">
-            <img
-              src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=600&q=80"
-              alt="Névoa de Inverno"
-              style="
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                display: block;
-              "
-            />
-          </div>
-          <div class="portfolio-overlay">
-            <div class="portfolio-info">
-              <h3>Névoa de Inverno</h3>
-              <p>Fine Art — São Marcos</p>
-            </div>
-          </div>
-        </div>
-        <div class="portfolio-item" data-cat="corporativo">
-          <div style="height: 300px" class="portfolio-img">
-            <img
-              src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=600&q=80"
-              alt="Abertura FIERGS"
-              style="
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                display: block;
-              "
-            />
-          </div>
-          <div class="portfolio-overlay">
-            <div class="portfolio-info">
-              <h3>Abertura FIERGS</h3>
-              <p>Corporativo — Porto Alegre</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div style="text-align: center; margin-top: 64px" class="reveal">
-        <a
-          href="#"
-          style="
-            display: inline-block;
-            font-size: 10px;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--cream);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 16px 40px;
-            text-decoration: none;
-            transition: all 0.3s;
-          "
-          onmouseover="
-            this.style.borderColor = 'var(--accent)';
-            this.style.color = 'var(--accent-light)';
-          "
-          onmouseout="
-            this.style.borderColor = 'rgba(255,255,255,0.2)';
-            this.style.color = 'var(--cream)';
-          "
-        >
-          Carregar mais trabalhos
+  <!-- Header / Navegação Sticky -->
+  <header id="main-header" class="fixed top-0 left-0 w-full z-40 py-6 px-6 md:px-16 transition-all duration-300 bg-brand-cream/90 backdrop-blur-md border-b border-brand-dark/5">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <a href="#" class="font-display text-xl md:text-2xl tracking-[0.12em] uppercase text-brand-dark hover:opacity-80 transition-opacity">
+        Isaías <span class="text-brand-terracotta font-light">Natanael</span>
+      </a>
+      
+      <nav class="hidden md:flex items-center gap-10 text-xs tracking-[0.2em] uppercase font-medium text-brand-dark/80">
+        <a href="#galeria" class="hover:text-brand-terracotta transition-colors">Galeria de Fotos</a>
+        <a href="#sobre" class="hover:text-brand-terracotta transition-colors">Visão</a>
+        <a href="#experiencia" class="hover:text-brand-terracotta transition-colors">Metodologia</a>
+        <a href="#contato" class="px-6 py-2.5 border border-brand-dark/20 rounded-full hover:border-brand-dark hover:bg-brand-dark hover:text-brand-cream transition-all duration-300">
+          Solicitar Orçamento
         </a>
-      </div>
-    </section>
+      </nav>
 
-    <!-- SOBRE -->
-    <section id="sobre">
-      <div class="about-photo reveal">
-        <div class="about-photo-main">
-          <img
-            src="https://images.unsplash.com/photo-1552168324-d612d77725e3?w=800&q=80"
-            alt="Isaías Natanael fotógrafo"
+      <button id="mobile-menu-btn" aria-label="Abrir menu" class="md:hidden text-brand-dark p-2">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="h-24"></div>
+
+  <!-- Hero Photo Intro -->
+  <section class="max-w-7xl mx-auto px-6 md:px-16 pt-8 pb-16 md:py-20">
+    <div class="space-y-6 fade-up">
+      <div class="inline-flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-brand-terracotta"></span>
+        <span class="font-display text-xs uppercase tracking-[0.25em] text-brand-terracotta font-medium">
+          FOTOGRAFIA DE EVENTOS & PROJETOS AUTORAIS
+        </span>
+      </div>
+      
+      <h1 class="font-display text-4xl sm:text-6xl md:text-7xl text-brand-dark font-light tracking-wide uppercase leading-tight">
+        GALERIA DE <span class="text-brand-terracotta font-normal">FOTOS</span>
+      </h1>
+      
+      <p class="text-base text-brand-charcoal/80 font-light leading-relaxed max-w-xl">
+        Cobertura documental de eventos corporativos, convenções, espetáculos culturais e ensaios pessoais capturados com olhar atento à atmosfera de cada instante.
+      </p>
+    </div>
+  </section>
+
+  <!-- Galeria de Fotos (Photo Masonry Grid) -->
+  <section id="galeria" class="max-w-7xl mx-auto px-6 md:px-16 pb-24 md:pb-32">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 fade-up">
+      <div>
+        <span class="font-display text-xs uppercase tracking-[0.25em] text-brand-terracotta font-medium">Acervo Fotográfico</span>
+        <h3 class="font-display text-3xl md:text-4xl text-brand-dark mt-1 font-light uppercase tracking-wide">Trabalhos Selecionados</h3>
+      </div>
+      
+      <div id="filter-tabs" class="flex flex-wrap gap-2 text-xs uppercase tracking-[0.15em] font-medium text-brand-dark/70">
+        <button data-filter="all" class="filter-btn active px-4 py-2 rounded-full border border-brand-dark bg-brand-dark text-brand-cream transition-all">Todas as Fotos</button>
+        <button data-filter="corporativo" class="filter-btn px-4 py-2 rounded-full border border-brand-dark/10 hover:border-brand-dark/40 transition-all">Corporativo</button>
+        <button data-filter="shows" class="filter-btn px-4 py-2 rounded-full border border-brand-dark/10 hover:border-brand-dark/40 transition-all">Galas & Shows</button>
+        <button data-filter="retratos" class="filter-btn px-4 py-2 rounded-full border border-brand-dark/10 hover:border-brand-dark/40 transition-all">Retratos</button>
+        <button data-filter="fineart" class="filter-btn px-4 py-2 rounded-full border border-brand-dark/10 hover:border-brand-dark/40 transition-all">Fine Art</button>
+      </div>
+    </div>
+
+    <!-- Masonry Photo Grid -->
+    <div class="gallery-masonry fade-up">
+      
+      <article data-category="corporativo" class="gallery-item group cursor-pointer">
+        <div class="img-zoom-container bg-brand-linen relative shadow-sm mb-2">
+          <img 
+            src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80" 
+            alt="Convenção Corporativa" 
+            class="w-full h-auto object-cover"
           />
         </div>
-        <div class="about-badge">
-          <span class="about-badge-num">8+</span>
-          <span class="about-badge-txt">anos de experiência</span>
+        <span class="font-display text-[10px] uppercase tracking-widest text-brand-terracotta font-medium">Corporativo</span>
+        <h4 class="font-display text-lg text-brand-dark mt-0.5 group-hover:text-brand-terracotta transition-colors font-light uppercase">Convenção Anual & Gala Empresarial</h4>
+      </article>
+
+      <article data-category="retratos" class="gallery-item group cursor-pointer">
+        <div class="img-zoom-container bg-brand-linen relative shadow-sm mb-2">
+          <img 
+            src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80" 
+            alt="Série Retratos" 
+            class="w-full h-auto object-cover"
+          />
         </div>
-      </div>
-      <div class="about-text reveal reveal-delay-2">
-        <p class="section-eyebrow">O fotógrafo</p>
-        <h2 class="section-title">
-          Uma história contada<br />através de <em>luz</em>
-        </h2>
-        <div class="divider"></div>
-        <p>
-          Cada fotografia é uma decisão consciente — de enquadramento, luz,
-          tempo. Meu trabalho nasce do encontro entre técnica e sensibilidade.
-        </p>
-        <p>
-          Baseado em Porto Alegre, atendo em todo o Brasil e exterior. Seja num
-          casamento em Gramado ou num evento corporativo no coração da cidade, o
-          compromisso é sempre o mesmo: entregar imagens que emocionam.
-        </p>
-        <div class="about-stats">
-          <div>
-            <div class="stat-num">134</div>
-            <div class="stat-label">Eventos realizados</div>
-          </div>
-          <div>
-            <div class="stat-num">98%</div>
-            <div class="stat-label">Clientes satisfeitos</div>
-          </div>
-          <div>
-            <div class="stat-num">12</div>
-            <div class="stat-label">Países fotografados</div>
-          </div>
+        <span class="font-display text-[10px] uppercase tracking-widest text-brand-terracotta font-medium">Retratos</span>
+        <h4 class="font-display text-lg text-brand-dark mt-0.5 group-hover:text-brand-terracotta transition-colors font-light uppercase">Entre Luzes e Sombras</h4>
+      </article>
+
+      <article data-category="shows" class="gallery-item group cursor-pointer">
+        <div class="img-zoom-container bg-brand-linen relative shadow-sm mb-2">
+          <img 
+            src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80" 
+            alt="Festival Cultural" 
+            class="w-full h-auto object-cover"
+          />
         </div>
-      </div>
-    </section>
+        <span class="font-display text-[10px] uppercase tracking-widest text-brand-terracotta font-medium">Galas & Shows</span>
+        <h4 class="font-display text-lg text-brand-dark mt-0.5 group-hover:text-brand-terracotta transition-colors font-light uppercase">Festival Cultural & Espetáculo</h4>
+      </article>
 
-    <!-- DEPOIMENTOS -->
-    <section id="depoimentos">
-      <div style="text-align: center" class="reveal">
-        <p class="section-eyebrow">O que dizem</p>
-        <h2 class="section-title">Depoimentos dos <em>clientes</em></h2>
-      </div>
-
-      <div class="testimonials-track-wrap">
-        <div class="testimonials-track" id="testimonialsTrack">
-          <!-- original -->
-          <div class="testimonial-card">
-            <div class="testimonial-stars">
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-            </div>
-            <p class="testimonial-quote">
-              "O Fulano captou cada momento com uma sensibilidade que nos
-              surpreendeu. As fotos são simplesmente mágicas — cada vez que
-              olhamos, nos transportamos de volta àquele dia."
-            </p>
-            <div class="testimonial-author">
-              <div class="author-avatar">A</div>
-              <div>
-                <p class="author-name">Ana & Pedro</p>
-                <p class="author-event">Casamento · Porto Alegre</p>
-              </div>
-            </div>
-          </div>
-          <div class="testimonial-card">
-            <div class="testimonial-stars">
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-            </div>
-            <p class="testimonial-quote">
-              "Contratamos para fotografar nosso evento corporativo e o
-              resultado foi impressionante. Profissionalismo e criatividade que
-              elevaram a percepção da nossa marca."
-            </p>
-            <div class="testimonial-author">
-              <div class="author-avatar">R</div>
-              <div>
-                <p class="author-name">Roberto Alves</p>
-                <p class="author-event">Evento Corporativo · Caxias do Sul</p>
-              </div>
-            </div>
-          </div>
-          <div class="testimonial-card">
-            <div class="testimonial-stars">
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-            </div>
-            <p class="testimonial-quote">
-              "As fotos fine art que fez das paisagens da Serra são obras de
-              arte. Já a terceira vez que trabalhamos juntos. Altamente
-              recomendado."
-            </p>
-            <div class="testimonial-author">
-              <div class="author-avatar">C</div>
-              <div>
-                <p class="author-name">Camila Moretti</p>
-                <p class="author-event">Fine Art · Gramado</p>
-              </div>
-            </div>
-          </div>
-          <div class="testimonial-card">
-            <div class="testimonial-stars">
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-            </div>
-            <p class="testimonial-quote">
-              "Desde o primeiro contato, ficou claro que o Fulano estava
-              totalmente comprometido em capturar nossa história. O resultado
-              superou todas as expectativas."
-            </p>
-            <div class="testimonial-author">
-              <div class="author-avatar">J</div>
-              <div>
-                <p class="author-name">Júlia & Thiago</p>
-                <p class="author-event">Casamento · Gramado</p>
-              </div>
-            </div>
-          </div>
-          <div class="testimonial-card">
-            <div class="testimonial-stars">
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-            </div>
-            <p class="testimonial-quote">
-              "Incrível a capacidade de encontrar a luz certa em qualquer
-              situação. As fotos do nosso evento corporativo ficaram com uma
-              qualidade editorial impressionante."
-            </p>
-            <div class="testimonial-author">
-              <div class="author-avatar">M</div>
-              <div>
-                <p class="author-name">Marina Souza</p>
-                <p class="author-event">Evento · Porto Alegre</p>
-              </div>
-            </div>
-          </div>
-          <!-- duplicado para loop contínuo -->
-          <div class="testimonial-card">
-            <div class="testimonial-stars">
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-            </div>
-            <p class="testimonial-quote">
-              "O Fulano captou cada momento com uma sensibilidade que nos
-              surpreendeu. As fotos são simplesmente mágicas — cada vez que
-              olhamos, nos transportamos de volta àquele dia."
-            </p>
-            <div class="testimonial-author">
-              <div class="author-avatar">A</div>
-              <div>
-                <p class="author-name">Ana & Pedro</p>
-                <p class="author-event">Casamento · Porto Alegre</p>
-              </div>
-            </div>
-          </div>
-          <div class="testimonial-card">
-            <div class="testimonial-stars">
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-            </div>
-            <p class="testimonial-quote">
-              "Contratamos para fotografar nosso evento corporativo e o
-              resultado foi impressionante. Profissionalismo e criatividade que
-              elevaram a percepção da nossa marca."
-            </p>
-            <div class="testimonial-author">
-              <div class="author-avatar">R</div>
-              <div>
-                <p class="author-name">Roberto Alves</p>
-                <p class="author-event">Evento Corporativo · Caxias do Sul</p>
-              </div>
-            </div>
-          </div>
-          <div class="testimonial-card">
-            <div class="testimonial-stars">
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-            </div>
-            <p class="testimonial-quote">
-              "As fotos fine art que fez das paisagens da Serra são obras de
-              arte. Já a terceira vez que trabalhamos juntos. Altamente
-              recomendado."
-            </p>
-            <div class="testimonial-author">
-              <div class="author-avatar">C</div>
-              <div>
-                <p class="author-name">Camila Moretti</p>
-                <p class="author-event">Fine Art · Gramado</p>
-              </div>
-            </div>
-          </div>
-          <div class="testimonial-card">
-            <div class="testimonial-stars">
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-            </div>
-            <p class="testimonial-quote">
-              "Desde o primeiro contato, ficou claro que o Fulano estava
-              totalmente comprometido em capturar nossa história. O resultado
-              superou todas as expectativas."
-            </p>
-            <div class="testimonial-author">
-              <div class="author-avatar">J</div>
-              <div>
-                <p class="author-name">Júlia & Thiago</p>
-                <p class="author-event">Casamento · Gramado</p>
-              </div>
-            </div>
-          </div>
-          <div class="testimonial-card">
-            <div class="testimonial-stars">
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-            </div>
-            <p class="testimonial-quote">
-              "Incrível a capacidade de encontrar a luz certa em qualquer
-              situação. As fotos do nosso evento corporativo ficaram com uma
-              qualidade editorial impressionante."
-            </p>
-            <div class="testimonial-author">
-              <div class="author-avatar">M</div>
-              <div>
-                <p class="author-name">Marina Souza</p>
-                <p class="author-event">Evento · Porto Alegre</p>
-              </div>
-            </div>
-          </div>
+      <article data-category="fineart" class="gallery-item group cursor-pointer">
+        <div class="img-zoom-container bg-brand-linen relative shadow-sm mb-2">
+          <img 
+            src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1200&q=80" 
+            alt="Fine Art" 
+            class="w-full h-auto object-cover"
+          />
         </div>
-      </div>
-    </section>
+        <span class="font-display text-[10px] uppercase tracking-widest text-brand-terracotta font-medium">Fine Art</span>
+        <h4 class="font-display text-lg text-brand-dark mt-0.5 group-hover:text-brand-terracotta transition-colors font-light uppercase">Contornos Naturais</h4>
+      </article>
 
-    <!-- CONTATO -->
-    <section id="contato">
-      <div class="reveal">
-        <p class="section-eyebrow">Vamos conversar</p>
-        <h2 class="section-title">Agende sua<br /><em>sessão</em></h2>
-        <div class="divider"></div>
-        <div class="contact-details">
-          <div class="contact-detail">
-            <div class="detail-icon">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"
-                />
-              </svg>
-            </div>
-            <div>
-              <p class="detail-label">WhatsApp</p>
-              <p class="detail-value">+55 51 9 9999-9999</p>
-            </div>
-          </div>
-          <div class="contact-detail">
-            <div class="detail-icon">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-                />
-                <polyline points="22,6 12,13 2,6" />
-              </svg>
-            </div>
-            <div>
-              <p class="detail-label">Email</p>
-              <p class="detail-value">contato@fulanodetal.com.br</p>
-            </div>
-          </div>
-          <div class="contact-detail">
-            <div class="detail-icon">
-              <svg viewBox="0 0 24 24">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-                <circle cx="12" cy="10" r="3" />
-              </svg>
-            </div>
-            <div>
-              <p class="detail-label">Localização</p>
-              <p class="detail-value">Porto Alegre, RS — Brasil</p>
-            </div>
-          </div>
+      <article data-category="corporativo" class="gallery-item group cursor-pointer">
+        <div class="img-zoom-container bg-brand-linen relative shadow-sm mb-2">
+          <img 
+            src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=80" 
+            alt="Simpósio Internacional" 
+            class="w-full h-auto object-cover"
+          />
         </div>
-      </div>
+        <span class="font-display text-[10px] uppercase tracking-widest text-brand-terracotta font-medium">Corporativo</span>
+        <h4 class="font-display text-lg text-brand-dark mt-0.5 group-hover:text-brand-terracotta transition-colors font-light uppercase">Simpósio Internacional de Inovação</h4>
+      </article>
 
-      <div class="contact-form-wrap reveal reveal-delay-2">
-        <form onsubmit="return false;">
-          <div class="form-row">
-            <div class="form-group">
-              <label>Nome</label>
-              <input type="text" placeholder="Seu nome" />
-            </div>
-            <div class="form-group">
-              <label>Email</label>
-              <input type="email" placeholder="seu@email.com" />
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label>Telefone</label>
-              <input type="tel" placeholder="(51) 9 0000-0000" />
-            </div>
-            <div class="form-group">
-              <label>Tipo de evento</label>
-              <select>
-                <option value="" disabled selected>Selecione...</option>
-                <option>Casamento</option>
-                <option>Corporativo</option>
-                <option>Fine Art / Paisagem</option>
-                <option>Ensaio de casal</option>
-                <option>Evento social</option>
-                <option>Outro</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Data prevista</label>
-            <input type="text" placeholder="Ex: Março de 2026" />
-          </div>
-          <div class="form-group">
-            <label>Mensagem</label>
-            <textarea
-              placeholder="Conte um pouco sobre seu evento, local, expectativas..."
-            ></textarea>
-          </div>
-          <button type="submit" class="submit-btn">Enviar mensagem</button>
-        </form>
-      </div>
-    </section>
+      <article data-category="fineart" class="gallery-item group cursor-pointer">
+        <div class="img-zoom-container bg-brand-linen relative shadow-sm mb-2">
+          <img 
+            src="https://images.unsplash.com/photo-1470240731273-7821a6eeb6bd?auto=format&fit=crop&w=1200&q=80" 
+            alt="Paisagem Serra" 
+            class="w-full h-auto object-cover"
+          />
+        </div>
+        <span class="font-display text-[10px] uppercase tracking-widest text-brand-terracotta font-medium">Fine Art</span>
+        <h4 class="font-display text-lg text-brand-dark mt-0.5 group-hover:text-brand-terracotta transition-colors font-light uppercase">Bruma Matinal na Serra</h4>
+      </article>
 
-    <!-- FOOTER -->
-    <footer>
-      <div class="footer-logo">Fulano <span>de Tal</span></div>
-      <p class="footer-copy">
-        © 2026 Fulano de Tal Fotografia — Todos os direitos reservados
+    </div>
+  </section>
+
+  <!-- CTA / Contato -->
+  <section id="contato" class="bg-brand-dark text-brand-cream py-24 md:py-32 px-6 md:px-16 text-center">
+    <div class="max-w-2xl mx-auto space-y-8 fade-up">
+      <span class="font-display text-xs uppercase tracking-[0.25em] text-brand-terracotta font-medium">Disponibilidade & Orçamentos</span>
+      
+      <h3 class="font-display text-4xl md:text-5xl font-light uppercase tracking-wide leading-tight">
+        VAMOS REGISTRAR O SEU PRÓXIMO EVENTO?
+      </h3>
+      
+      <p class="text-brand-cream/70 text-sm md:text-base font-light max-w-lg mx-auto">
+        Fotografia para eventos corporativos, solenidades, festivais e projetos autorais em todo o Brasil.
       </p>
-      <div class="footer-social">
-        <a href="#">Instagram</a>
-        <a href="#">Behance</a>
-        <a href="#">WhatsApp</a>
-      </div>
-    </footer>
 
-    <script src="./script.js"></script>
-  </body>
+      <div>
+        <a 
+          href="https://wa.me/5551999999999?text=Ol%C3%A1%20Isa%C3%ADas,%20gostaria%20de%20solicitar%20um%20or%C3%A7amento" 
+          target="_blank" 
+          class="inline-block px-8 py-4 border border-brand-terracotta text-brand-cream rounded-full text-xs font-display uppercase tracking-[0.2em] font-medium hover:bg-brand-terracotta hover:text-brand-dark transition-all duration-300 shadow-md"
+        >
+          Solicitar Orçamento via WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-brand-dark/95 text-brand-cream/60 py-10 px-6 md:px-16 border-t border-brand-cream/10">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between text-xs tracking-wider gap-6">
+      <div class="font-display text-base uppercase text-brand-cream tracking-widest">
+        Isaías Natanael
+      </div>
+      <p>© 2026 Isaías Natanael Fotografia. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+</body>
 </html>

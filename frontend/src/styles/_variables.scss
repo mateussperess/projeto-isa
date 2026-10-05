@@ -1,19 +1,31 @@
-// ─── CORES ────────────────────────────────────────────────────────
-$cream: #f5f2ee;
-$sand: #e8e2d9;
-$warm-gray: #9c9089;
-$dark: #1a1714;
-$dark-mid: #2e2a27;
-$accent: #8b6f4e;
-$accent-light: #c4a882;
-$white: #fdfcfb;
+// ─── PALETA PASTEL MINERAL & GALERIA FOTOGRÁFICA ─────────────────────────
+$brand-dark: #22201E;          // Pedra Escura / Grafite (Títulos e Texto)
+$brand-terracotta: #B89379;    // Terracota / Bronze Pastel (Acentos e Destaques)
+$brand-terracotta-light: #E8DFD5; // Terracota claro para bordas
+$brand-cream: #FAF7F4;         // Off-White Linho (Fundo Principal)
+$brand-linen: #F3ECE4;         // Linho Areia (Containers de fotos)
+$brand-charcoal: #33302E;      // Carvão suave para parágrafos
+$brand-muted: #7A736E;         // Taupe neutro para legendas
 
-// ─── TIPOGRAFIA ───────────────────────────────────────────────────
-$serif: "Cormorant Garamond", Georgia, serif;
-$sans: "Jost", sans-serif;
+// Compatibilidade de variáveis SCSS
+$cream: $brand-cream;
+$sand: $brand-linen;
+$warm-gray: $brand-muted;
+$dark: $brand-dark;
+$dark-mid: #2B2825;
+$accent: $brand-terracotta;
+$accent-light: $brand-terracotta-light;
+$white: #FDFBF8;
+
+// ─── TIPOGRAFIA CONTEMPORÂNEA DE GALERIA ─────────────────────────
+$font-display: "Outfit", system-ui, -apple-system, sans-serif;
+$font-body: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+
+$serif: $font-display;
+$sans: $font-body;
 
 // ─── TRANSIÇÃO GLOBAL ─────────────────────────────────────────────
-$transition: all 0.45s cubic-bezier(0.25, 0.1, 0.25, 1);
+$transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 
 // ─── BREAKPOINTS ──────────────────────────────────────────────────
 $bp-tablet: 1024px;

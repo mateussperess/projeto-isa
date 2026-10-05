@@ -1,386 +1,308 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import api from "../api/axios";
 import useReveal from "../hooks/useReveal";
-import Navbar from "../components/NavBar";
+import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
+import PhotoMasonryGrid from "../components/PhotoMasonryGrid";
+import LightboxModal from "../components/LightboxModal";
 
-const CATEGORIAS = [
+// Fotografias selecionadas em alta definição (acervo inicial de galeria)
+const GALERIA_FOTOS_DEFAULT = [
   {
-    tag: "01 — Especialidade",
-    nome: "Casamentos",
-    count: "48 projetos",
-    img: "https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&q=80",
+    id: 1,
+    title: "Convenção Anual & Gala Corporativa",
+    category: "Corporativo",
+    capa: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80",
+    categoria: { slug: "corporativo", nome: "Corporativo" },
   },
   {
-    tag: "02 — Especialidade",
-    nome: "Corporativo",
-    count: "31 projetos",
-    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80",
+    id: 2,
+    title: "Entre Luzes e Sombras — Retrato Autoral",
+    category: "Retratos",
+    capa: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80",
+    categoria: { slug: "retratos", nome: "Retratos" },
   },
   {
-    tag: "03 — Especialidade",
-    nome: "Fine Art",
-    count: "22 projetos",
-    img: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=600&q=80",
+    id: 3,
+    title: "Festival Cultural & Iluminação Cênica",
+    category: "Galas & Shows",
+    capa: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80",
+    categoria: { slug: "shows", nome: "Galas & Shows" },
   },
   {
-    tag: "04 — Especialidade",
-    nome: "Ensaios",
-    count: "19 projetos",
-    img: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600&q=80",
+    id: 4,
+    title: "Celebração ao Entardecer na Serra",
+    category: "Celebrações",
+    capa: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80",
+    categoria: { slug: "celebracoes", nome: "Celebrações" },
   },
   {
-    tag: "05 — Especialidade",
-    nome: "Eventos",
-    count: "14 projetos",
-    img: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80",
+    id: 5,
+    title: "Solenidade de Formatura & Baile",
+    category: "Eventos Sociais",
+    capa: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1200&q=80",
+    categoria: { slug: "eventos", nome: "Eventos Sociais" },
   },
+  {
+    id: 6,
+    title: "Contornos Naturais — Fine Art",
+    category: "Fine Art",
+    capa: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1200&q=80",
+    categoria: { slug: "fineart", nome: "Fine Art" },
+  },
+  {
+    id: 7,
+    title: "Bruma Matinal na Serra Gaúcha",
+    category: "Fine Art",
+    capa: "https://images.unsplash.com/photo-1470240731273-7821a6eeb6bd?auto=format&fit=crop&w=1200&q=80",
+    categoria: { slug: "fineart", nome: "Fine Art" },
+  },
+  {
+    id: 8,
+    title: "Simpósio Internacional de Inovação",
+    category: "Corporativo",
+    capa: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=80",
+    categoria: { slug: "corporativo", nome: "Corporativo" },
+  },
+  {
+    id: 9,
+    title: "Espetáculo de Dança & Movimento",
+    category: "Galas & Shows",
+    capa: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=1200&q=80",
+    categoria: { slug: "shows", nome: "Galas & Shows" },
+  }
 ];
 
-const DEPOIMENTOS = [
+const METODOLOGIA_STEPS = [
   {
-    inicial: "A",
-    nome: "Ana & Pedro",
-    evento: "Casamento · Porto Alegre",
-    texto:
-      '"O Fulano captou cada momento com uma sensibilidade que nos surpreendeu. As fotos são simplesmente mágicas."',
+    num: "01.",
+    titulo: "Alinhamento & Cronograma",
+    desc: "Compreensão detalhada da agenda do evento, momentos chave e requisitos de iluminação e cobertura.",
   },
   {
-    inicial: "R",
-    nome: "Roberto Alves",
-    evento: "Evento Corporativo · Caxias do Sul",
-    texto:
-      '"Contratamos para fotografar nosso evento corporativo e o resultado foi impressionante."',
+    num: "02.",
+    titulo: "Equipamento & Iluminação Cênica",
+    desc: "Seleção rigorosa de lentes e ótica para capturar imagens nítidas tanto em auditórios quanto ao ar livre.",
   },
   {
-    inicial: "C",
-    nome: "Camila Moretti",
-    evento: "Fine Art · Gramado",
-    texto:
-      '"As fotos fine art que fez das paisagens da Serra são obras de arte. Já a terceira vez que trabalhamos juntos."',
+    num: "03.",
+    titulo: "Atuação Discreta & Ágil",
+    desc: "Registro espontâneo da atmosfera, autoridades, participantes e detalhes sem interferir na dinâmica do acontecimento.",
   },
   {
-    inicial: "J",
-    nome: "Júlia & Thiago",
-    evento: "Casamento · Gramado",
-    texto:
-      '"O resultado superou todas as expectativas. Comprometido em capturar nossa história do início ao fim."',
-  },
-  {
-    inicial: "M",
-    nome: "Marina Souza",
-    evento: "Evento · Porto Alegre",
-    texto:
-      '"Incrível a capacidade de encontrar a luz certa em qualquer situação. Qualidade editorial impressionante."',
+    num: "04.",
+    titulo: "Entrega Digital & Tratamento",
+    desc: "Tratamento de cor consistente em tons pastéis e minerais, com galeria protegida de alta resolução.",
   },
 ];
 
 export default function Home() {
-  const [eventos, setEventos] = useState([]);
+  const [eventosBackend, setEventosBackend] = useState([]);
+  const [categoriasBackend, setCategoriasBackend] = useState([]);
   const [filtro, setFiltro] = useState("todos");
-  const navigate = useNavigate();
+  
+  // Estado para o Lightbox Carousel
+  const [lightboxState, setLightboxState] = useState({
+    isOpen: false,
+    currentIndex: 0,
+  });
 
   useReveal();
 
   useEffect(() => {
-    api.get("/eventos/").then((res) => setEventos(res.data));
+    api
+      .get("/eventos/")
+      .then((res) => setEventosBackend(res.data))
+      .catch(() => setEventosBackend([]));
+
+    api
+      .get("/categorias/")
+      .then((res) => setCategoriasBackend(res.data))
+      .catch(() => setCategoriasBackend([]));
   }, []);
+
+  // Lista de fotografias ativas
+  const fotosGerais = eventosBackend.length > 0
+    ? eventosBackend.map((ev) => ({
+        id: ev.id,
+        title: ev.titulo,
+        src: ev.capa,
+        category: ev.categoria?.nome || "Evento",
+        categoria: ev.categoria || { slug: "eventos", nome: "Eventos" },
+      }))
+    : GALERIA_FOTOS_DEFAULT;
+
+  // Abas de filtro
+  const abasFiltro = [
+    { slug: "todos", nome: "Todas as Fotos" },
+    ...(categoriasBackend.length > 0
+      ? categoriasBackend.map((c) => ({ slug: c.slug, nome: c.nome }))
+      : [
+          { slug: "corporativo", nome: "Corporativo" },
+          { slug: "shows", nome: "Galas & Shows" },
+          { slug: "retratos", nome: "Retratos" },
+          { slug: "celebracoes", nome: "Celebrações" },
+          { slug: "fineart", nome: "Fine Art" },
+        ]),
+  ];
+
+  // Filtrar fotos
+  const fotosFiltradas = fotosGerais.filter((foto) => {
+    if (filtro === "todos") return true;
+    const catSlug = (foto.categoria?.slug || foto.category || "").toLowerCase();
+    return catSlug.includes(filtro);
+  });
+
+  // Abrir foto no lightbox
+  const handleOpenLightbox = (indexInFiltered) => {
+    setLightboxState({
+      isOpen: true,
+      currentIndex: indexInFiltered,
+    });
+  };
 
   return (
     <>
       <Navbar />
-      <Hero />
+      <Hero photos={fotosGerais} />
 
-      {/* ── CATEGORIAS ──────────────────────────────────────────── */}
-      <section id="categorias">
-        <div className="categories-header reveal">
+      {/* ── SEÇÃO GALERIA DE FOTOS (PHOTO-FIRST) ───────────────── */}
+      <section id="galeria">
+        <div className="gallery-header-bar reveal">
           <div>
-            <p className="section-eyebrow">O que faço</p>
-            <h2 className="section-title">Especialidades</h2>
+            <span className="section-eyebrow">ACERVO FOTOGRÁFICO</span>
+            <h2 className="section-title">
+              GALERIA DE <em>FOTOS</em>
+            </h2>
           </div>
-          <a
-            href="#portfolio"
-            style={{
-              fontSize: 10,
-              letterSpacing: "0.2em",
-              textTransform: "uppercase",
-              color: "var(--warm-gray, #9c9089)",
-            }}
-          >
-            Ver todos os trabalhos →
-          </a>
-        </div>
 
-        <div className="categories-grid reveal">
-          {CATEGORIAS.map((cat, i) => (
-            <div className="cat-card" key={i}>
-              <div className="cat-bg" style={{ height: "100%" }}>
-                <img src={cat.img} alt={cat.nome} />
-              </div>
-              <div className="cat-overlay" />
-              <span className="cat-count">{cat.count}</span>
-              <div className="cat-content">
-                <p className="cat-tag">{cat.tag}</p>
-                <h3 className="cat-name">{cat.nome}</h3>
-                <a href="#portfolio" className="cat-link">
-                  Ver galeria <span className="cat-arrow" />
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── PORTFOLIO (eventos do Django) ───────────────────────── */}
-      <section id="portfolio">
-        <div className="portfolio-header reveal">
-          <div>
-            <p className="section-eyebrow">Trabalhos recentes</p>
-            <h2 className="section-title">Portfólio</h2>
-          </div>
-          <div className="filter-tabs">
-            {[
-              "todos",
-              "casamento",
-              "corporativo",
-              "fine-art",
-              "ensaio",
-              "evento",
-            ].map((cat) => (
+          <div className="gallery-filter-tabs">
+            {abasFiltro.map((cat) => (
               <button
-                key={cat}
-                className={`filter-btn${filtro === cat ? " active" : ""}`}
-                onClick={() => setFiltro(cat)}
+                key={cat.slug}
+                className={`filter-btn ${filtro === cat.slug ? "active" : ""}`}
+                onClick={() => setFiltro(cat.slug)}
               >
-                {cat}
+                {cat.nome}
               </button>
             ))}
           </div>
         </div>
 
-        <div className="portfolio-masonry">
-          {eventos.map((evento) => (
-            <div
-              key={evento.id}
-              className="portfolio-item"
-              onClick={() => navigate(`/evento/${evento.id}`)}
-            >
-              {evento.capa && (
-                <img
-                  className="portfolio-img"
-                  src={evento.capa}
-                  alt={evento.titulo}
-                  loading="lazy"
-                />
-              )}
-              <div className="portfolio-overlay">
-                <div className="portfolio-info">
-                  <h3>{evento.titulo}</h3>
-                  <p>
-                    {evento.data} · {evento.total_fotos} fotos
-                  </p>
-                </div>
-              </div>
+        {/* Grade de Galeria de Fotos */}
+        <div className="reveal">
+          <PhotoMasonryGrid
+            items={fotosFiltradas}
+            onOpenLightbox={handleOpenLightbox}
+          />
+        </div>
+      </section>
+
+      {/* ── SEÇÃO SOBRE / VISÃO ─────────────────────────────────── */}
+      <section id="sobre">
+        <div className="philosophy-container reveal">
+          <span className="section-eyebrow">VISÃO & CONCEITO</span>
+          
+          <h2 className="philosophy-quote">
+            “Não fotografo apenas o evento, mas a <span>energia singular</span> que conecta pessoas e ambientes.”
+          </h2>
+          
+          <div className="divider-line" />
+          
+          <p className="philosophy-text">
+            Com uma abordagem autoral e contemporânea, cada cobertura fotográfica é conduzida com atenção à iluminação, aos gestos espontâneos e à narrativa de cada acontecimento.
+          </p>
+
+          <div className="pillars-grid">
+            <div className="pillar-card">
+              <span className="pillar-num">01.</span>
+              <h3 className="pillar-title">Domínio Técnico de Luz</h3>
+              <p className="pillar-desc">
+                Precisão em palcos, auditórios com iluminação cênica desafiadora e luz natural ao ar livre.
+              </p>
+            </div>
+            <div className="pillar-card">
+              <span className="pillar-num">02.</span>
+              <h3 className="pillar-title">Atuação Documental</h3>
+              <p className="pillar-desc">
+                Discreção total para registrar autoridades, convidados e participantes de maneira autêntica.
+              </p>
+            </div>
+            <div className="pillar-card">
+              <span className="pillar-num">03.</span>
+              <h3 className="pillar-title">Edição Pastel Mineral</h3>
+              <p className="pillar-desc">
+                Tratamento limpo e atemporal com foco na fidelidade dos tons de pele e acervo visual refinado.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── METODOLOGIA / PROCESSO ───────────────────────────────── */}
+      <section id="experiencia">
+        <div className="experience-header reveal">
+          <span className="section-eyebrow">COMO FUNCIONA</span>
+          <h2 className="section-title">METODOLOGIA DE COBERTURA</h2>
+          <p className="exp-sub">
+            Do planejamento das lentes ao envio do acervo digital em alta resolução.
+          </p>
+        </div>
+
+        <div className="experience-grid reveal">
+          {METODOLOGIA_STEPS.map((step, i) => (
+            <div key={i} className="exp-step-card">
+              <span className="exp-num">{step.num}</span>
+              <h3 className="exp-title">{step.titulo}</h3>
+              <p className="exp-desc">{step.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* ── SOBRE ───────────────────────────────────────────────── */}
-      <section id="sobre">
-        <div className="about-photo reveal">
-          <div className="about-photo-main">
-            <img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80"
-              alt="Isaías Natanael"
-            />
-          </div>
-          <div className="about-badge">
-            <span className="about-badge-num">8+</span>
-            <span className="about-badge-txt">
-              anos de
-              <br />
-              experiência
-            </span>
-          </div>
-        </div>
-
-        <div className="about-text reveal reveal-delay-2">
-          <p className="section-eyebrow">Sobre mim</p>
-          <h2 className="section-title">
-            Cada foto conta
-            <br />
-            <em>uma história</em>
-          </h2>
-          <div className="divider" />
-          <p>
-            Sou fotógrafo especializado em casamentos, eventos corporativos e
-            fotografia fine art baseado em Porto Alegre. Acredito que cada
-            imagem deve capturar não apenas o momento, mas a emoção que o
-            envolve.
-          </p>
-          <p>
-            Com mais de 8 anos de experiência e centenas de histórias
-            documentadas, trago um olhar único para cada projeto — combinando
-            técnica apurada com sensibilidade artística.
-          </p>
-          <div className="about-stats">
-            <div>
-              <div className="stat-num">134+</div>
-              <div className="stat-label">Projetos</div>
-            </div>
-            <div>
-              <div className="stat-num">8+</div>
-              <div className="stat-label">Anos</div>
-            </div>
-            <div>
-              <div className="stat-num">100%</div>
-              <div className="stat-label">Satisfação</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── DEPOIMENTOS ─────────────────────────────────────────── */}
-      <section id="depoimentos">
-        <div className="reveal">
-          <p className="section-eyebrow">O que dizem</p>
-          <h2 className="section-title">Depoimentos</h2>
-        </div>
-
-        <div className="testimonials-track-wrap">
-          {/* duplicado para loop contínuo */}
-          <div className="testimonials-track">
-            {[...DEPOIMENTOS, ...DEPOIMENTOS].map((dep, i) => (
-              <div className="testimonial-card" key={i}>
-                <div className="testimonial-stars">
-                  {[...Array(5)].map((_, s) => (
-                    <div className="star" key={s} />
-                  ))}
-                </div>
-                <p className="testimonial-quote">{dep.texto}</p>
-                <div className="testimonial-author">
-                  <div className="author-avatar">{dep.inicial}</div>
-                  <div>
-                    <p className="author-name">{dep.nome}</p>
-                    <p className="author-event">{dep.evento}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── CONTATO ─────────────────────────────────────────────── */}
+      {/* ── CONTATO ────────────────────────────────────────────── */}
       <section id="contato">
-        <div className="reveal">
-          <p className="section-eyebrow">Vamos conversar</p>
-          <h2 className="section-title">
-            Agende sua
-            <br />
-            <em>sessão</em>
+        <div className="contact-container reveal">
+          <span className="contact-eyebrow">DISPONIBILIDADE & ORÇAMENTOS</span>
+          
+          <h2 className="contact-title">
+            VAMOS REGISTRAR O SEU PRÓXIMO EVENTO OU PROJETO?
           </h2>
-          <div className="divider" />
-          <div className="contact-details">
-            <div className="contact-detail">
-              <div className="detail-icon">
-                <svg viewBox="0 0 24 24">
-                  <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
-                </svg>
-              </div>
-              <div>
-                <p className="detail-label">WhatsApp</p>
-                <p className="detail-value">+55 51 9 9999-9999</p>
-              </div>
-            </div>
-            <div className="contact-detail">
-              <div className="detail-icon">
-                <svg viewBox="0 0 24 24">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                  <polyline points="22,6 12,13 2,6" />
-                </svg>
-              </div>
-              <div>
-                <p className="detail-label">Email</p>
-                <p className="detail-value">contato@isaiasnatanael.com</p>
-              </div>
-            </div>
-            <div className="contact-detail">
-              <div className="detail-icon">
-                <svg viewBox="0 0 24 24">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-                  <circle cx="12" cy="10" r="3" />
-                </svg>
-              </div>
-              <div>
-                <p className="detail-label">Localização</p>
-                <p className="detail-value">Porto Alegre, RS — Brasil</p>
-              </div>
-            </div>
-          </div>
-        </div>
+          
+          <p className="contact-text">
+            Fotografia de eventos corporativos, galas, festivais, formaturas e ensaios autorais em Porto Alegre, Serra Gaúcha e em todo o território nacional.
+          </p>
 
-        <div className="contact-form-wrap reveal reveal-delay-2">
-          <div className="form-row">
-            <div className="form-group">
-              <label>Nome</label>
-              <input type="text" placeholder="Seu nome" />
-            </div>
-            <div className="form-group">
-              <label>Email</label>
-              <input type="email" placeholder="seu@email.com" />
-            </div>
+          <div className="contact-buttons">
+            <a
+              href="https://wa.me/5551999999999?text=Ol%C3%A1%20Isa%C3%ADas,%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20fotografia"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-whatsapp"
+            >
+              Solicitar Orçamento via WhatsApp
+            </a>
+            
+            <a
+              href="mailto:contato@isaiasnatanael.com"
+              className="btn-email"
+            >
+              Enviar E-mail Comercial
+            </a>
           </div>
-          <div className="form-row">
-            <div className="form-group">
-              <label>Telefone</label>
-              <input type="tel" placeholder="(51) 9 0000-0000" />
-            </div>
-            <div className="form-group">
-              <label>Tipo de evento</label>
-              <select defaultValue="">
-                <option value="" disabled>
-                  Selecione...
-                </option>
-                <option>Casamento</option>
-                <option>Corporativo</option>
-                <option>Fine Art / Paisagem</option>
-                <option>Ensaio de casal</option>
-                <option>Evento social</option>
-                <option>Outro</option>
-              </select>
-            </div>
-          </div>
-          <div className="form-group">
-            <label>Data prevista</label>
-            <input type="text" placeholder="Ex: Março de 2026" />
-          </div>
-          <div className="form-group">
-            <label>Mensagem</label>
-            <textarea placeholder="Conte um pouco sobre seu evento, local, expectativas..." />
-          </div>
-          <button type="button" className="submit-btn">
-            Enviar mensagem
-          </button>
         </div>
       </section>
 
-      {/* ── FOOTER ──────────────────────────────────────────────── */}
-      <footer>
-        <div className="footer-logo">
-          Isaías <span>Natanael</span>
-        </div>
-        <p className="footer-copy">
-          © 2026 Isaías Natanael Fotografia — Todos os direitos reservados
-        </p>
-        <div className="footer-social">
-          <a href="#">Instagram</a>
-          <a href="#">Behance</a>
-          <a href="#">LinkedIn</a>
-        </div>
-      </footer>
+      {/* ── LIGHTBOX CAROUSEL MODAL ────────────────────────────── */}
+      <LightboxModal
+        isOpen={lightboxState.isOpen}
+        onClose={() => setLightboxState((prev) => ({ ...prev, isOpen: false }))}
+        photos={fotosFiltradas}
+        currentIndex={lightboxState.currentIndex}
+        onSelectIndex={(newIdx) =>
+          setLightboxState((prev) => ({ ...prev, currentIndex: newIdx }))
+        }
+      />
     </>
   );
 }

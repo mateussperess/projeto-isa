@@ -6,189 +6,227 @@ nav {
   left: 0;
   right: 0;
   z-index: 100;
-  padding: 28px 60px;
+  padding: 24px 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background: rgba($brand-cream, 0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba($brand-dark, 0.05);
   transition: $transition;
 
   &.scrolled {
-    background: rgba($dark, 0.92);
-    backdrop-filter: blur(12px);
-    padding: 18px 60px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 16px 60px;
+    background: rgba($brand-cream, 0.95);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
   }
 }
 
 .logo {
-  font-family: $serif;
-  font-size: 22px;
-  font-weight: 300;
-  letter-spacing: 0.08em;
-  color: $cream;
+  font-family: $font-display;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $brand-dark;
 
   span {
-    color: $accent-light;
-    font-style: italic;
+    color: $brand-terracotta;
+    font-weight: 300;
   }
 }
 
 .nav-links {
   display: flex;
-  gap: 40px;
+  gap: 36px;
 
   a {
-    font-family: $sans;
+    font-family: $font-body;
     font-size: 11px;
-    font-weight: 300;
+    font-weight: 500;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: $warm-gray;
+    color: rgba($brand-dark, 0.75);
     transition: color 0.3s;
 
     &:hover {
-      color: $accent-light;
+      color: $brand-terracotta;
     }
   }
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .nav-contact-btn {
+  font-family: $font-body;
   font-size: 11px;
-  font-weight: 300;
+  font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: $cream;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  padding: 10px 22px;
+  color: $brand-dark;
+  border: 1px solid rgba($brand-dark, 0.2);
+  border-radius: 999px;
+  padding: 10px 24px;
   transition: $transition;
 
   &:hover {
-    background: $accent;
-    border-color: $accent;
-    color: $white;
+    background: $brand-dark;
+    border-color: $brand-dark;
+    color: $brand-cream;
   }
 }
 
-// ─── HAMBURGER ────────────────────────────────────────────────────
-.nav-hamburger {
+// ─── BOTÃO HAMBÚRGUER / FECHAR (LUCIDE REACT) ────────────────────
+.nav-hamburger-btn {
   display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-  z-index: 200;
-
-  span {
-    display: block;
-    width: 24px;
-    height: 1px;
-    background: $cream;
-    transition: $transition;
-  }
-
-  &.open {
-    span:nth-child(1) {
-      transform: translateY(6px) rotate(45deg);
-    }
-
-    span:nth-child(2) {
-      opacity: 0;
-    }
-
-    span:nth-child(3) {
-      transform: translateY(-6px) rotate(-45deg);
-    }
-  }
-}
-
-// ─── DRAWER MOBILE ────────────────────────────────────────────────
-.nav-drawer {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba($dark, 0.97);
-  z-index: 150;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 36px;
-  opacity: 0;
-  transition: opacity 0.35s ease;
-  pointer-events: none;
+  gap: 6px;
+  background: transparent;
+  border: 1px solid rgba($brand-dark, 0.2);
+  border-radius: 999px;
+  padding: 8px 16px;
+  color: $brand-dark;
+  cursor: pointer;
+  z-index: 300;
+  transition: $transition;
+
+  &:hover {
+    background: rgba($brand-dark, 0.08);
+  }
+
+  .btn-close-text {
+    font-family: $font-display;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: $brand-dark;
+  }
+
+  .btn-menu-icon {
+    color: $brand-dark;
+    stroke-width: 2;
+    display: block;
+  }
 
   &.open {
-    display: flex;
+    border-color: $brand-dark;
+    background: rgba($brand-dark, 0.08);
+  }
+}
+
+// ─── BACKDROP & DRAWER MOBILE ────────────────────────────────────
+.nav-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba($brand-dark, 0.4);
+  backdrop-filter: blur(6px);
+  z-index: 140;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+
+  &.open {
     opacity: 1;
     pointer-events: all;
   }
+}
+
+.nav-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: $brand-cream;
+  z-index: 150;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  transform: translateY(-100%);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+
+  &.open {
+    transform: translateY(0);
+  }
+
+  .drawer-close-btn {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba($brand-dark, 0.06);
+    border: 1px solid rgba($brand-dark, 0.15);
+    border-radius: 999px;
+    padding: 8px 18px;
+    color: $brand-dark;
+    font-family: $font-display;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: $transition;
+
+    &:hover {
+      background: $brand-dark;
+      color: $brand-cream;
+    }
+  }
 
   a {
-    font-family: $serif;
-    font-size: 36px;
+    font-family: $font-display;
+    font-size: 26px;
     font-weight: 300;
-    color: $cream;
-    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: $brand-dark;
+    letter-spacing: 0.1em;
     transition: color 0.3s;
 
     &:hover {
-      color: $accent-light;
+      color: $brand-terracotta;
     }
   }
 
   .drawer-cta {
-    font-family: $sans;
+    font-family: $font-body;
     font-size: 11px;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: $accent-light;
-    border: 1px solid $accent;
+    color: $brand-cream;
+    background: $brand-dark;
+    border-radius: 999px;
     padding: 14px 36px;
     margin-top: 12px;
   }
 }
 
-// ─── RESPONSIVO ───────────────────────────────────────────────────
 @media (max-width: $bp-tablet) {
   nav {
-    padding: 24px 40px;
-  }
-
-  nav.scrolled {
-    padding: 16px 40px;
-  }
-
-  .nav-links {
-    gap: 28px;
+    padding: 20px 40px;
   }
 }
 
 @media (max-width: $bp-mobile) {
   nav {
-    padding: 20px 24px;
-  }
-
-  nav.scrolled {
-    padding: 16px 24px;
+    padding: 18px 24px;
   }
 
   .nav-links,
-  .nav-contact-btn {
+  .nav-right {
     display: none;
   }
 
-  .nav-hamburger {
+  .nav-hamburger-btn {
     display: flex;
-  }
-}
-
-@media (max-width: $bp-small) {
-  nav {
-    padding: 16px 20px;
-  }
-
-  nav.scrolled {
-    padding: 12px 20px;
   }
 }
