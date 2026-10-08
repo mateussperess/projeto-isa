@@ -6,8 +6,15 @@ export default function Navbar() {
   const [drawerOpen, setDrawer] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", onScroll);
+    let isScrolled = false;
+    const onScroll = () => {
+      const nextScrolled = window.scrollY > 40;
+      if (nextScrolled !== isScrolled) {
+        isScrolled = nextScrolled;
+        setScrolled(nextScrolled);
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 

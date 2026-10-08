@@ -24,6 +24,7 @@ export default function PhotoMasonryGrid({ items = [], onOpenLightbox }) {
                 src={imageSrc}
                 alt={item.titulo || item.title || "Fotografia por Isaías Natanael"}
                 loading="lazy"
+                decoding="async"
                 className="photo-img"
               />
               <div className="photo-overlay">

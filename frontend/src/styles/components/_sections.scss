@@ -2,10 +2,10 @@
 
 // ─── EYEBROWS E TÍTULOS GLOBAIS DE SEÇÃO ─────────────────────────
 .section-eyebrow {
-  font-family: $font-display;
+  font-family: $font-accent;
   font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.25em;
+  font-weight: 600;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: $brand-terracotta;
   margin-bottom: 8px;
@@ -15,7 +15,7 @@
   font-family: $font-display;
   font-size: clamp(32px, 4vw, 48px);
   font-weight: 300;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: $brand-dark;
   line-height: 1.15;
@@ -55,12 +55,12 @@
   flex-wrap: wrap;
 
   .filter-btn {
-    font-family: $font-body;
+    font-family: $font-lexend;
     font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.15em;
+    font-weight: 400;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: rgba($brand-dark, 0.7);
+    color: rgba($brand-dark, 0.75);
     padding: 8px 20px;
     border-radius: 999px;
     border: 1px solid rgba($brand-dark, 0.12);
@@ -151,9 +151,9 @@
   }
 
   .photo-tag {
-    font-family: $font-display;
+    font-family: $font-accent;
     font-size: 10px;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: $brand-terracotta;
@@ -253,28 +253,31 @@
     border: 1px solid rgba($brand-dark, 0.06);
 
     .pillar-num {
-      font-family: $font-display;
-      font-size: 16px;
-      font-weight: 500;
+      font-family: $font-bebas;
+      font-size: 24px;
+      letter-spacing: 0.08em;
       color: $brand-terracotta;
       display: block;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
+      line-height: 1;
     }
 
     .pillar-title {
       font-family: $font-display;
       font-size: 18px;
       font-weight: 400;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       color: $brand-dark;
       margin-bottom: 8px;
     }
 
     .pillar-desc {
-      font-size: 13px;
+      font-family: $font-body;
+      font-size: 13.5px;
       font-weight: 300;
-      line-height: 1.6;
+      letter-spacing: 0.01em;
+      line-height: 1.65;
       color: $brand-muted;
     }
   }
@@ -321,28 +324,31 @@
     border: 1px solid rgba($brand-dark, 0.06);
 
     .exp-num {
-      font-family: $font-display;
-      font-size: 24px;
-      font-weight: 500;
+      font-family: $font-bebas;
+      font-size: 32px;
+      letter-spacing: 0.08em;
       color: $brand-terracotta;
       display: block;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
+      line-height: 1;
     }
 
     .exp-title {
       font-family: $font-display;
       font-size: 18px;
       font-weight: 400;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       color: $brand-dark;
       margin-bottom: 10px;
     }
 
     .exp-desc {
-      font-size: 13px;
+      font-family: $font-body;
+      font-size: 13.5px;
       font-weight: 300;
-      line-height: 1.6;
+      letter-spacing: 0.01em;
+      line-height: 1.65;
       color: rgba($brand-charcoal, 0.75);
     }
   }
@@ -365,10 +371,10 @@
   }
 
   .contact-eyebrow {
-    font-family: $font-display;
+    font-family: $font-accent;
     font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.25em;
+    font-weight: 600;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: $brand-terracotta;
   }
@@ -377,17 +383,19 @@
     font-family: $font-display;
     font-size: clamp(32px, 4.5vw, 54px);
     font-weight: 300;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     line-height: 1.15;
     color: $brand-cream;
   }
 
   .contact-text {
+    font-family: $font-body;
     font-size: 15px;
     font-weight: 300;
+    letter-spacing: 0.01em;
     line-height: 1.7;
-    color: rgba($brand-cream, 0.75);
+    color: rgba($brand-cream, 0.8);
     max-width: 520px;
   }
 
@@ -403,10 +411,10 @@
       border: 1px solid $brand-terracotta;
       border-radius: 999px;
       color: $brand-cream;
-      font-family: $font-body;
+      font-family: $font-lexend;
       font-size: 11px;
       font-weight: 500;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       transition: $transition;
 
@@ -421,10 +429,10 @@
       border: 1px solid rgba($brand-cream, 0.2);
       border-radius: 999px;
       color: rgba($brand-cream, 0.85);
-      font-family: $font-body;
+      font-family: $font-lexend;
       font-size: 11px;
       font-weight: 500;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       transition: $transition;
 

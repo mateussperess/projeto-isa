@@ -58,10 +58,10 @@
 
 .hero-header-meta {
   .meta-badge {
-    font-family: $font-display;
+    font-family: $font-accent;
     font-size: 11px;
     font-weight: 500;
-    letter-spacing: 0.25em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: $brand-terracotta;
     background: rgba($brand-dark, 0.6);
@@ -75,7 +75,7 @@
 .hero-display-title {
   font-family: $font-display;
   font-size: clamp(44px, 7vw, 96px);
-  font-weight: 200;
+  font-weight: 300;
   letter-spacing: 0.08em;
   line-height: 0.95;
   color: $white;
@@ -87,8 +87,9 @@
   font-family: $font-body;
   font-size: 15px;
   font-weight: 300;
-  line-height: 1.6;
-  color: rgba($white, 0.8);
+  letter-spacing: 0.01em;
+  line-height: 1.65;
+  color: rgba($white, 0.85);
   max-width: 520px;
 }
 
@@ -103,10 +104,10 @@
   gap: 16px;
 
   .explore-btn {
-    font-family: $font-display;
+    font-family: $font-lexend;
     font-size: 11px;
     font-weight: 500;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: $white;
     transition: color 0.3s;
@@ -120,14 +121,16 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    font-family: $font-display;
+    font-family: $font-accent;
     font-size: 12px;
     letter-spacing: 0.15em;
 
     .indicator-current {
-      font-size: 16px;
-      font-weight: 500;
+      font-family: $font-bebas;
+      font-size: 20px;
+      letter-spacing: 0.08em;
       color: $brand-terracotta;
+      line-height: 1;
     }
 
     .indicator-sep {
@@ -135,7 +138,11 @@
     }
 
     .indicator-total {
+      font-family: $font-bebas;
+      font-size: 16px;
+      letter-spacing: 0.08em;
       color: rgba($white, 0.6);
+      line-height: 1;
     }
 
     .indicator-label {

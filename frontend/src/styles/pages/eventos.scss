@@ -1,5 +1,5 @@
 /* Evento.scss */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Playfair+Display:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Manrope:wght@300..700&family=Plus+Jakarta+Sans:wght@300..700&display=swap');
 
 // ── Tokens ──────────────────────────────────────────────
 $bg: #0e0e0e;
@@ -25,14 +25,16 @@ $transition-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 13px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
   color: $text-subtle;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
   margin-bottom: 2.5rem;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   transition: color 0.2s;
 
@@ -57,9 +59,11 @@ $transition-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .ev-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.4rem;
-  font-weight: 700;
+  font-family: 'Manrope', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   line-height: 1.15;
   color: $text-primary;
   margin: 0 0 0.5rem;

@@ -17,15 +17,18 @@ $accent: $brand-terracotta;
 $accent-light: $brand-terracotta-light;
 $white: #FDFBF8;
 
-// ─── TIPOGRAFIA CONTEMPORÂNEA DE GALERIA ─────────────────────────
-$font-display: "Outfit", system-ui, -apple-system, sans-serif;
-$font-body: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+// ─── TIPOGRAFIA ESTRATÉGICA (DONA ISA + BEBAS NEUE + LEXEND) ───────
+$font-display: "Manrope", system-ui, -apple-system, sans-serif;          // Títulos Principais & Marca
+$font-bebas: "Bebas Neue", sans-serif;                                    // Números de Impacto & Destaques
+$font-lexend: "Lexend", system-ui, -apple-system, sans-serif;             // Botões, Filtros & Subtítulos UI
+$font-body: "DM Sans", system-ui, -apple-system, sans-serif;             // Texto corrido & parágrafos
+$font-accent: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;  // Badges & Metadados pequenos
 
 $serif: $font-display;
 $sans: $font-body;
 
-// ─── TRANSIÇÃO GLOBAL ─────────────────────────────────────────────
-$transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+// ─── TRANSIÇÃO GLOBAL OTIMIZADA (HARDWARE-ACCELERATED) ───────────
+$transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.35s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease;
 
 // ─── BREAKPOINTS ──────────────────────────────────────────────────
 $bp-tablet: 1024px;

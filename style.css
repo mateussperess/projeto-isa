@@ -15,9 +15,13 @@
   --accent: #8b6f4e;
   --accent-light: #c4a882;
   --white: #fdfcfb;
-  --serif: "Cormorant Garamond", Georgia, serif;
-  --sans: "Jost", sans-serif;
-  --transition: all 0.45s cubic-bezier(0.25, 0.1, 0.25, 1);
+  --display: "Manrope", sans-serif;
+  --bebas: "Bebas Neue", sans-serif;
+  --lexend: "Lexend", sans-serif;
+  --serif: "Manrope", sans-serif;
+  --sans: "DM Sans", sans-serif;
+  --accent-font: "Plus Jakarta Sans", sans-serif;
+  --transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.35s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.35s ease, color 0.35s ease;
 }
 
 html {

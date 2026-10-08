@@ -12,7 +12,10 @@ nav {
   justify-content: space-between;
   background: rgba($brand-cream, 0.88);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba($brand-dark, 0.05);
+  transform: translateZ(0);
+  will-change: transform, padding, background-color;
   transition: $transition;
 
   &.scrolled {
@@ -41,10 +44,10 @@ nav {
   gap: 36px;
 
   a {
-    font-family: $font-body;
+    font-family: $font-lexend;
     font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.2em;
+    font-weight: 400;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: rgba($brand-dark, 0.75);
     transition: color 0.3s;
@@ -62,10 +65,10 @@ nav {
 }
 
 .nav-contact-btn {
-  font-family: $font-body;
+  font-family: $font-lexend;
   font-size: 11px;
   font-weight: 500;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: $brand-dark;
   border: 1px solid rgba($brand-dark, 0.2);

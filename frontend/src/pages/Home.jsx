@@ -12,63 +12,63 @@ const GALERIA_FOTOS_DEFAULT = [
     id: 1,
     title: "Convenção Anual & Gala Corporativa",
     category: "Corporativo",
-    capa: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80",
+    capa: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=900&q=75",
     categoria: { slug: "corporativo", nome: "Corporativo" },
   },
   {
     id: 2,
     title: "Entre Luzes e Sombras — Retrato Autoral",
     category: "Retratos",
-    capa: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80",
+    capa: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=75",
     categoria: { slug: "retratos", nome: "Retratos" },
   },
   {
     id: 3,
     title: "Festival Cultural & Iluminação Cênica",
     category: "Galas & Shows",
-    capa: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80",
+    capa: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=900&q=75",
     categoria: { slug: "shows", nome: "Galas & Shows" },
   },
   {
     id: 4,
     title: "Celebração ao Entardecer na Serra",
     category: "Celebrações",
-    capa: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80",
+    capa: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=75",
     categoria: { slug: "celebracoes", nome: "Celebrações" },
   },
   {
     id: 5,
     title: "Solenidade de Formatura & Baile",
     category: "Eventos Sociais",
-    capa: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1200&q=80",
+    capa: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=900&q=75",
     categoria: { slug: "eventos", nome: "Eventos Sociais" },
   },
   {
     id: 6,
     title: "Contornos Naturais — Fine Art",
     category: "Fine Art",
-    capa: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1200&q=80",
+    capa: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=75",
     categoria: { slug: "fineart", nome: "Fine Art" },
   },
   {
     id: 7,
     title: "Bruma Matinal na Serra Gaúcha",
     category: "Fine Art",
-    capa: "https://images.unsplash.com/photo-1470240731273-7821a6eeb6bd?auto=format&fit=crop&w=1200&q=80",
+    capa: "https://images.unsplash.com/photo-1470240731273-7821a6eeb6bd?auto=format&fit=crop&w=900&q=75",
     categoria: { slug: "fineart", nome: "Fine Art" },
   },
   {
     id: 8,
     title: "Simpósio Internacional de Inovação",
     category: "Corporativo",
-    capa: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=80",
+    capa: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=900&q=75",
     categoria: { slug: "corporativo", nome: "Corporativo" },
   },
   {
     id: 9,
     title: "Espetáculo de Dança & Movimento",
     category: "Galas & Shows",
-    capa: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=1200&q=80",
+    capa: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=900&q=75",
     categoria: { slug: "shows", nome: "Galas & Shows" },
   }
 ];
@@ -275,7 +275,7 @@ export default function Home() {
 
           <div className="contact-buttons">
             <a
-              href="https://wa.me/5551999999999?text=Ol%C3%A1%20Isa%C3%ADas,%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20fotografia"
+              href="https://wa.me/555183187452?text=Ol%C3%A1%20Isa%C3%ADas,%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20fotografia"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-whatsapp"
