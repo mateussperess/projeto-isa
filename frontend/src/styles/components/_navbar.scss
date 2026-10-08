@@ -10,18 +10,18 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba($brand-cream, 0.88);
+  background: var(--bg-nav);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba($brand-dark, 0.05);
+  border-bottom: 1px solid var(--border-subtle);
   transform: translateZ(0);
   will-change: transform, padding, background-color;
   transition: $transition;
 
   &.scrolled {
     padding: 16px 60px;
-    background: rgba($brand-cream, 0.95);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    background: var(--bg-nav-scrolled);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   }
 }
 
@@ -31,10 +31,10 @@ nav {
   font-weight: 400;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: $brand-dark;
+  color: var(--text-title);
 
   span {
-    color: $brand-terracotta;
+    color: var(--accent);
     font-weight: 300;
   }
 }
@@ -49,11 +49,13 @@ nav {
     font-weight: 400;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: rgba($brand-dark, 0.75);
-    transition: color 0.3s;
+    color: var(--text-main);
+    opacity: 0.85;
+    transition: color 0.3s, opacity 0.3s;
 
     &:hover {
-      color: $brand-terracotta;
+      color: var(--accent);
+      opacity: 1;
     }
   }
 }
@@ -61,7 +63,37 @@ nav {
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
+}
+
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: $font-lexend;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-title);
+  background: rgba(196, 158, 133, 0.12);
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: $transition;
+
+  &:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(196, 158, 133, 0.2);
+  }
+
+  .theme-toggle-label {
+    @media (max-width: $bp-mobile) {
+      display: none;
+    }
+  }
 }
 
 .nav-contact-btn {
@@ -70,16 +102,16 @@ nav {
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: $brand-dark;
-  border: 1px solid rgba($brand-dark, 0.2);
+  color: var(--text-title);
+  border: 1px solid var(--border-subtle);
   border-radius: 999px;
   padding: 10px 24px;
   transition: $transition;
 
   &:hover {
-    background: $brand-dark;
-    border-color: $brand-dark;
-    color: $brand-cream;
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #141210;
   }
 }
 
@@ -90,16 +122,17 @@ nav {
   justify-content: center;
   gap: 6px;
   background: transparent;
-  border: 1px solid rgba($brand-dark, 0.2);
+  border: 1px solid var(--border-subtle);
   border-radius: 999px;
   padding: 8px 16px;
-  color: $brand-dark;
+  color: var(--text-title);
   cursor: pointer;
   z-index: 300;
   transition: $transition;
 
   &:hover {
-    background: rgba($brand-dark, 0.08);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--accent);
   }
 
   .btn-close-text {
@@ -108,18 +141,18 @@ nav {
     font-weight: 500;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: $brand-dark;
+    color: var(--text-title);
   }
 
   .btn-menu-icon {
-    color: $brand-dark;
+    color: var(--text-title);
     stroke-width: 2;
     display: block;
   }
 
   &.open {
-    border-color: $brand-dark;
-    background: rgba($brand-dark, 0.08);
+    border-color: var(--accent);
+    background: rgba(196, 158, 133, 0.15);
   }
 }
 
@@ -127,8 +160,8 @@ nav {
 .nav-drawer-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba($brand-dark, 0.4);
-  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
   z-index: 140;
   opacity: 0;
   pointer-events: none;
@@ -146,7 +179,7 @@ nav {
   left: 0;
   right: 0;
   bottom: 0;
-  background: $brand-cream;
+  background: #141210;
   z-index: 150;
   display: flex;
   flex-direction: column;
@@ -167,11 +200,11 @@ nav {
     display: flex;
     align-items: center;
     gap: 8px;
-    background: rgba($brand-dark, 0.06);
-    border: 1px solid rgba($brand-dark, 0.15);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 999px;
     padding: 8px 18px;
-    color: $brand-dark;
+    color: $brand-cream;
     font-family: $font-display;
     font-size: 11px;
     font-weight: 500;
@@ -181,8 +214,9 @@ nav {
     transition: $transition;
 
     &:hover {
-      background: $brand-dark;
-      color: $brand-cream;
+      background: $brand-terracotta;
+      border-color: $brand-terracotta;
+      color: #141210;
     }
   }
 
@@ -191,7 +225,7 @@ nav {
     font-size: 26px;
     font-weight: 300;
     text-transform: uppercase;
-    color: $brand-dark;
+    color: $brand-cream;
     letter-spacing: 0.1em;
     transition: color 0.3s;
 
@@ -205,11 +239,16 @@ nav {
     font-size: 11px;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: $brand-cream;
-    background: $brand-dark;
+    color: #141210;
+    background: $brand-terracotta;
     border-radius: 999px;
     padding: 14px 36px;
     margin-top: 12px;
+
+    &:hover {
+      background: $brand-cream;
+      color: #141210;
+    }
   }
 }
 

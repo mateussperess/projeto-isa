@@ -7,7 +7,7 @@
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: $brand-terracotta;
+  color: var(--accent);
   margin-bottom: 8px;
 }
 
@@ -17,13 +17,13 @@
   font-weight: 300;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: $brand-dark;
+  color: var(--text-title);
   line-height: 1.15;
 
   em {
     font-style: normal;
     font-weight: 400;
-    color: $brand-terracotta;
+    color: var(--accent);
   }
 }
 
@@ -37,7 +37,8 @@
 // ─── GALERIA DE FOTOS (PHOTO MASONRY GRID) ───────────────────────
 #galeria {
   padding: 100px 60px;
-  background: $brand-cream;
+  background: var(--bg-main);
+  transition: background-color 0.4s ease;
 }
 
 .gallery-header-bar {
@@ -60,22 +61,22 @@
     font-weight: 400;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: rgba($brand-dark, 0.75);
+    color: var(--text-main);
     padding: 8px 20px;
     border-radius: 999px;
-    border: 1px solid rgba($brand-dark, 0.12);
+    border: 1px solid var(--border-subtle);
     background: transparent;
     transition: $transition;
 
     &:hover {
-      border-color: rgba($brand-dark, 0.4);
-      color: $brand-dark;
+      border-color: var(--border-hover);
+      color: var(--text-title);
     }
 
     &.active {
-      background: $brand-dark;
-      border-color: $brand-dark;
-      color: $brand-cream;
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #141210;
     }
   }
 }
@@ -197,12 +198,245 @@
   }
 }
 
+// ─── SEÇÃO HISTÓRIA NA FOTOGRAFIA ─────────────────────────────────
+#historia {
+  background: var(--bg-main);
+  padding: 100px 60px;
+  border-top: 1px solid var(--border-subtle);
+
+  .history-container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .history-header {
+    max-width: 760px;
+    margin-bottom: 48px;
+  }
+
+  .history-text-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
+    margin-bottom: 56px;
+
+    @media (max-width: $bp-tablet) {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+  }
+
+  .history-paragraph {
+    font-family: $font-body;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--text-muted);
+
+    strong {
+      color: var(--text-title);
+      font-weight: 400;
+    }
+  }
+
+  .history-timeline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 40px;
+
+    @media (max-width: $bp-tablet) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: $bp-mobile) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .timeline-card {
+    background: var(--bg-card);
+    padding: 24px;
+    border-radius: 3px;
+    border: 1px solid var(--border-card);
+    transition: $transition;
+
+    &:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-hover);
+    }
+
+    .timeline-year {
+      font-family: $font-bebas;
+      font-size: 26px;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 6px;
+      line-height: 1;
+    }
+
+    .timeline-title {
+      font-family: $font-display;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-title);
+      margin-bottom: 6px;
+    }
+
+    .timeline-desc {
+      font-family: $font-body;
+      font-size: 12.5px;
+      font-weight: 300;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+  }
+}
+
+// ─── SEÇÃO SOBRE O FOTÓGRAFO ──────────────────────────────────────
+#sobre-fotografo {
+  background: var(--bg-secondary);
+  padding: 100px 60px;
+  border-top: 1px solid var(--border-subtle);
+
+  .photographer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 64px;
+    align-items: center;
+
+    @media (max-width: $bp-tablet) {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  .photographer-portrait-wrap {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--bg-card);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border-card);
+
+    img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(15%) contrast(1.05);
+      transition: filter 0.5s ease, transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+
+      &:hover {
+        filter: grayscale(0%) contrast(1);
+        transform: scale(1.03);
+      }
+    }
+
+    .photographer-badge {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      background: rgba(20, 18, 16, 0.88);
+      backdrop-filter: blur(8px);
+      padding: 14px 20px;
+      border-radius: 3px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+
+      .badge-name {
+        font-family: $font-display;
+        font-size: 15px;
+        font-weight: 400;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-title);
+        display: block;
+      }
+
+      .badge-role {
+        font-family: $font-accent;
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+    }
+  }
+
+  .photographer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .photographer-title {
+    font-family: $font-display;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-title);
+    line-height: 1.15;
+  }
+
+  .photographer-bio {
+    font-family: $font-body;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--text-muted);
+  }
+
+  .photographer-details-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 12px;
+
+    @media (max-width: $bp-mobile) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .detail-box {
+    background: var(--bg-card);
+    padding: 18px;
+    border-radius: 3px;
+    border: 1px solid var(--border-card);
+
+    .detail-label {
+      font-family: $font-accent;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .detail-value {
+      font-family: $font-lexend;
+      font-size: 12.5px;
+      font-weight: 400;
+      color: var(--text-title);
+    }
+  }
+}
+
 // ─── SEÇÃO VISÃO & FILOSOFIA ─────────────────────────────────────
 #sobre {
-  background: rgba($brand-linen, 0.5);
+  background: var(--bg-secondary);
   padding: 100px 60px;
-  border-top: 1px solid rgba($brand-dark, 0.05);
-  border-bottom: 1px solid rgba($brand-dark, 0.05);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background-color 0.4s ease;
 
   .philosophy-container {
     max-width: 900px;
@@ -216,11 +450,11 @@
     font-weight: 300;
     letter-spacing: 0.02em;
     line-height: 1.35;
-    color: $brand-dark;
+    color: var(--text-title);
     margin: 24px 0;
 
     span {
-      color: $brand-terracotta;
+      color: var(--accent);
       font-weight: 400;
     }
   }
@@ -229,7 +463,7 @@
     font-size: 15px;
     font-weight: 300;
     line-height: 1.8;
-    color: rgba($brand-charcoal, 0.85);
+    color: var(--text-muted);
     max-width: 640px;
     margin: 0 auto;
   }
@@ -247,16 +481,22 @@
   }
 
   .pillar-card {
-    background: rgba($brand-cream, 0.9);
+    background: var(--bg-card);
     padding: 28px;
     border-radius: 3px;
-    border: 1px solid rgba($brand-dark, 0.06);
+    border: 1px solid var(--border-card);
+    transition: $transition;
+
+    &:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-hover);
+    }
 
     .pillar-num {
       font-family: $font-bebas;
       font-size: 24px;
       letter-spacing: 0.08em;
-      color: $brand-terracotta;
+      color: var(--accent);
       display: block;
       margin-bottom: 6px;
       line-height: 1;
@@ -268,7 +508,7 @@
       font-weight: 400;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: $brand-dark;
+      color: var(--text-title);
       margin-bottom: 8px;
     }
 
@@ -278,16 +518,17 @@
       font-weight: 300;
       letter-spacing: 0.01em;
       line-height: 1.65;
-      color: $brand-muted;
+      color: var(--text-muted);
     }
   }
 }
 
 // ─── A EXPERIÊNCIA ────────────────────────────────────────────────
 #experiencia {
-  background: rgba($brand-linen, 0.4);
+  background: var(--bg-main);
   padding: 100px 60px;
-  border-top: 1px solid rgba($brand-dark, 0.05);
+  border-top: 1px solid var(--border-subtle);
+  transition: background-color 0.4s ease;
 
   .experience-header {
     text-align: center;
@@ -297,7 +538,7 @@
     p.exp-sub {
       font-size: 14px;
       font-weight: 300;
-      color: rgba($brand-charcoal, 0.75);
+      color: var(--text-muted);
       margin-top: 12px;
     }
   }
@@ -318,16 +559,22 @@
   }
 
   .exp-step-card {
-    background: $brand-cream;
+    background: var(--bg-card);
     padding: 32px 28px;
     border-radius: 3px;
-    border: 1px solid rgba($brand-dark, 0.06);
+    border: 1px solid var(--border-card);
+    transition: $transition;
+
+    &:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-hover);
+    }
 
     .exp-num {
       font-family: $font-bebas;
       font-size: 32px;
       letter-spacing: 0.08em;
-      color: $brand-terracotta;
+      color: var(--accent);
       display: block;
       margin-bottom: 8px;
       line-height: 1;
@@ -339,7 +586,7 @@
       font-weight: 400;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: $brand-dark;
+      color: var(--text-title);
       margin-bottom: 10px;
     }
 
@@ -349,7 +596,7 @@
       font-weight: 300;
       letter-spacing: 0.01em;
       line-height: 1.65;
-      color: rgba($brand-charcoal, 0.75);
+      color: var(--text-muted);
     }
   }
 }

@@ -6,6 +6,10 @@ export default function Navbar() {
   const [drawerOpen, setDrawer] = useState(false);
 
   useEffect(() => {
+    document.documentElement.setAttribute("data-theme", "dark");
+  }, []);
+
+  useEffect(() => {
     let isScrolled = false;
     const onScroll = () => {
       const nextScrolled = window.scrollY > 40;
@@ -35,16 +39,22 @@ export default function Navbar() {
   return (
     <>
       <nav id="navbar" className={scrolled ? "scrolled" : ""}>
-        <a href="#" className="logo">
-          ISAÍAS <span>NATANAEL</span>
+        <a href="#hero" className="logo">
+          BY <span>ISAÍAS</span>
         </a>
 
         <ul className="nav-links">
           <li>
-            <a href="#galeria">Galeria de Fotos</a>
+            <a href="#hero">O Olhar</a>
           </li>
           <li>
-            <a href="#sobre">Visão</a>
+            <a href="#galeria">Portfólio</a>
+          </li>
+          <li>
+            <a href="#historia">História</a>
+          </li>
+          <li>
+            <a href="#sobre-fotografo">Fotógrafo</a>
           </li>
           <li>
             <a href="#experiencia">Metodologia</a>
@@ -67,9 +77,7 @@ export default function Navbar() {
           onClick={() => setDrawer((v) => !v)}
         >
           {drawerOpen ? (
-            <>
-              <X className="btn-menu-icon" size={18} />
-            </>
+            <X className="btn-menu-icon" size={18} />
           ) : (
             <Menu className="btn-menu-icon" size={20} />
           )}
@@ -85,11 +93,17 @@ export default function Navbar() {
           <X size={22} />
         </button>
 
-        <a href="#galeria" onClick={close}>
-          Galeria de Fotos
+        <a href="#hero" onClick={close}>
+          O Olhar
         </a>
-        <a href="#sobre" onClick={close}>
-          Visão & Filosofia
+        <a href="#galeria" onClick={close}>
+          Portfólio
+        </a>
+        <a href="#historia" onClick={close}>
+          História
+        </a>
+        <a href="#sobre-fotografo" onClick={close}>
+          Sobre o Fotógrafo
         </a>
         <a href="#experiencia" onClick={close}>
           Metodologia
@@ -101,3 +115,4 @@ export default function Navbar() {
     </>
   );
 }
+

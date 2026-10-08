@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Isaías Natanael — Galeria de Fotos & Fotografia de Eventos</title>
+  <title> By Isaías — Galeria de Fotos & Fotografia de Eventos</title>
   
   <!-- SEO Tags -->
   <meta name="description" content="Galeria de fotos e cobertura documental de eventos corporativos, festivais, galas, retratos e ensaios por Isaías Natanael.">
@@ -50,12 +50,19 @@
       font-family: 'DM Sans', sans-serif;
       font-weight: 400;
       letter-spacing: 0.01em;
-      background-color: #FAF7F4;
-      color: #33302E;
+      background-color: #141210;
+      color: #E6E1DC;
     }
     h1, h2, h3, h4, .font-display {
       font-family: 'Manrope', sans-serif;
       letter-spacing: 0.08em;
+      color: #FAF7F4;
+    }
+    .font-bebas {
+      font-family: 'Bebas Neue', sans-serif;
+    }
+    .font-lexend {
+      font-family: 'Lexend', sans-serif;
     }
     .font-accent {
       font-family: 'Plus Jakarta Sans', sans-serif;
@@ -86,6 +93,7 @@
     .img-zoom-container {
       overflow: hidden;
       border-radius: 3px;
+      background: #1D1A18;
     }
     .img-zoom-container img {
       transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
@@ -97,10 +105,10 @@
       width: 6px;
     }
     ::-webkit-scrollbar-track {
-      background: #FAF7F4;
+      background: #141210;
     }
     ::-webkit-scrollbar-thumb {
-      background: #E8DFD5;
+      background: #2D2A26;
       border-radius: 3px;
     }
     ::-webkit-scrollbar-thumb:hover {
@@ -108,25 +116,25 @@
     }
   </style>
 </head>
-<body class="bg-brand-cream text-brand-charcoal font-sans antialiased selection:bg-brand-terracotta selection:text-white">
+<body class="bg-[#141210] text-[#E6E1DC] font-sans antialiased selection:bg-[#B89379] selection:text-white">
 
   <!-- Header / Navegação Sticky -->
-  <header id="main-header" class="fixed top-0 left-0 w-full z-40 py-6 px-6 md:px-16 transition-all duration-300 bg-brand-cream/90 backdrop-blur-md border-b border-brand-dark/5">
+  <header id="main-header" class="fixed top-0 left-0 w-full z-40 py-6 px-6 md:px-16 transition-all duration-300 bg-[#141210]/90 backdrop-blur-md border-b border-white/10">
     <div class="max-w-7xl mx-auto flex items-center justify-between">
-      <a href="#" class="font-display text-xl md:text-2xl tracking-[0.12em] uppercase text-brand-dark hover:opacity-80 transition-opacity">
-        Isaías <span class="text-brand-terracotta font-light">Natanael</span>
+      <a href="#" class="font-display text-xl md:text-2xl tracking-[0.12em] uppercase text-[#FAF7F4] hover:opacity-80 transition-opacity">
+        By <span class="text-[#B89379] font-light">Isaías</span>
       </a>
       
-      <nav class="hidden md:flex items-center gap-10 text-xs tracking-[0.2em] uppercase font-medium text-brand-dark/80">
-        <a href="#galeria" class="hover:text-brand-terracotta transition-colors">Galeria de Fotos</a>
-        <a href="#sobre" class="hover:text-brand-terracotta transition-colors">Visão</a>
-        <a href="#experiencia" class="hover:text-brand-terracotta transition-colors">Metodologia</a>
-        <a href="#contato" class="px-6 py-2.5 border border-brand-dark/20 rounded-full hover:border-brand-dark hover:bg-brand-dark hover:text-brand-cream transition-all duration-300">
+      <nav class="hidden md:flex items-center gap-10 text-xs tracking-[0.14em] uppercase font-lexend text-[#E6E1DC]/80">
+        <a href="#hero" class="hover:text-[#B89379] transition-colors">O Olhar</a>
+        <a href="#galeria" class="hover:text-[#B89379] transition-colors">Portfólio</a>
+        <a href="#experiencia" class="hover:text-[#B89379] transition-colors">Metodologia</a>
+        <a href="#contato" class="px-6 py-2.5 border border-white/20 rounded-full hover:border-[#B89379] hover:bg-[#B89379] hover:text-[#141210] transition-all duration-300">
           Solicitar Orçamento
         </a>
       </nav>
 
-      <button id="mobile-menu-btn" aria-label="Abrir menu" class="md:hidden text-brand-dark p-2">
+      <button id="mobile-menu-btn" aria-label="Abrir menu" class="md:hidden text-[#FAF7F4] p-2">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
@@ -137,22 +145,28 @@
   <div class="h-24"></div>
 
   <!-- Hero Photo Intro -->
-  <section class="max-w-7xl mx-auto px-6 md:px-16 pt-8 pb-16 md:py-20">
+  <section id="hero" class="max-w-7xl mx-auto px-6 md:px-16 pt-8 pb-16 md:py-20">
     <div class="space-y-6 fade-up">
       <div class="inline-flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-brand-terracotta"></span>
-        <span class="font-display text-xs uppercase tracking-[0.25em] text-brand-terracotta font-medium">
-          FOTOGRAFIA DE EVENTOS & PROJETOS AUTORAIS
+        <span class="w-2 h-2 rounded-full bg-[#B89379]"></span>
+        <span class="font-display text-xs uppercase tracking-[0.25em] text-[#B89379] font-medium">
+          OLHAR
         </span>
       </div>
       
-      <h1 class="font-display text-4xl sm:text-6xl md:text-7xl text-brand-dark font-light tracking-wide uppercase leading-tight">
-        GALERIA DE <span class="text-brand-terracotta font-normal">FOTOS</span>
+      <h1 class="font-display text-3xl sm:text-5xl md:text-6xl text-[#FAF7F4] font-light tracking-wide leading-tight">
+        “Que minhas fotos nunca terminem em si mesmas, mas conduzam o olhar para <span class="text-[#B89379] font-normal">aquilo que é eterno</span>.”
       </h1>
       
-      <p class="text-base text-brand-charcoal/80 font-light leading-relaxed max-w-xl">
-        Cobertura documental de eventos corporativos, convenções, espetáculos culturais e ensaios pessoais capturados com olhar atento à atmosfera de cada instante.
+      <p class="text-base text-[#E6E1DC]/80 font-light leading-relaxed max-w-2xl">
+        Assim, primeiro você conhece o meu olhar — para depois conhecer o meu trabalho. Fotografia documental de eventos corporativos, solenidades, galas e retratos autorais.
       </p>
+
+      <div class="pt-4">
+        <a href="#galeria" class="inline-flex items-center gap-2 text-xs font-lexend uppercase tracking-widest text-[#FAF7F4] hover:text-[#B89379] transition-colors">
+          Conheça o meu trabalho ↓
+        </a>
+      </div>
     </div>
   </section>
 
@@ -279,7 +293,7 @@
   <footer class="bg-brand-dark/95 text-brand-cream/60 py-10 px-6 md:px-16 border-t border-brand-cream/10">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between text-xs tracking-wider gap-6">
       <div class="font-display text-base uppercase text-brand-cream tracking-widest">
-        Isaías Natanael
+        By Isaías
       </div>
       <p>© 2026 Isaías Natanael Fotografia. Todos os direitos reservados.</p>
     </div>

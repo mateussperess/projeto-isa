@@ -1,13 +1,50 @@
-// ─── PALETA PASTEL MINERAL & GALERIA FOTOGRÁFICA ─────────────────────────
-$brand-dark: #22201E;          // Pedra Escura / Grafite (Títulos e Texto)
-$brand-terracotta: #B89379;    // Terracota / Bronze Pastel (Acentos e Destaques)
-$brand-terracotta-light: #E8DFD5; // Terracota claro para bordas
-$brand-cream: #FAF7F4;         // Off-White Linho (Fundo Principal)
-$brand-linen: #F3ECE4;         // Linho Areia (Containers de fotos)
-$brand-charcoal: #33302E;      // Carvão suave para parágrafos
-$brand-muted: #7A736E;         // Taupe neutro para legendas
+// ─── PALETA PASTEL MINERAL & MODO ESCURO DE GALERIA ──────────────────────
+:root, [data-theme="dark"] {
+  // MODO ESCURO (DEFAULT) — Estética Galeria de Arte & Fotografia Autoral
+  --bg-main: #141210;
+  --bg-secondary: #1A1816;
+  --bg-card: #1D1A18;
+  --bg-card-hover: #262320;
+  --bg-nav: rgba(20, 18, 16, 0.92);
+  --bg-nav-scrolled: rgba(20, 18, 16, 0.96);
+  --text-main: #E6E1DC;
+  --text-title: #FAF7F4;
+  --text-muted: #A39B94;
+  --accent: #C49E85;
+  --accent-light: #E8DFD5;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-card: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(196, 158, 133, 0.4);
+  --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
 
-// Compatibilidade de variáveis SCSS
+[data-theme="light"] {
+  // MODO CLARO — Pastel Mineral Linho
+  --bg-main: #FAF7F4;
+  --bg-secondary: #F3ECE4;
+  --bg-card: #F3ECE4;
+  --bg-card-hover: #EADFD3;
+  --bg-nav: rgba(250, 247, 244, 0.88);
+  --bg-nav-scrolled: rgba(250, 247, 244, 0.95);
+  --text-main: #33302E;
+  --text-title: #22201E;
+  --text-muted: #7A736E;
+  --accent: #B89379;
+  --accent-light: #E8DFD5;
+  --border-subtle: rgba(34, 32, 30, 0.08);
+  --border-card: rgba(34, 32, 30, 0.08);
+  --border-hover: rgba(184, 147, 121, 0.4);
+  --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.05);
+}
+
+$brand-dark: #22201E;          
+$brand-terracotta: #B89379;    
+$brand-terracotta-light: #E8DFD5; 
+$brand-cream: #FAF7F4;         
+$brand-linen: #F3ECE4;         
+$brand-charcoal: #33302E;      
+$brand-muted: #7A736E;         
+
 $cream: $brand-cream;
 $sand: $brand-linen;
 $warm-gray: $brand-muted;

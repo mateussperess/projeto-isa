@@ -72,15 +72,20 @@
   }
 }
 
-.hero-display-title {
+.hero-quote-title {
   font-family: $font-display;
-  font-size: clamp(44px, 7vw, 96px);
+  font-size: clamp(26px, 4.2vw, 56px);
   font-weight: 300;
-  letter-spacing: 0.08em;
-  line-height: 0.95;
+  letter-spacing: 0.02em;
+  line-height: 1.25;
   color: $white;
-  text-transform: uppercase;
-  margin-top: 4px;
+  max-width: 980px;
+  margin-top: 6px;
+
+  .hero-quote-highlight {
+    color: $brand-terracotta;
+    font-weight: 400;
+  }
 }
 
 .hero-subtext {

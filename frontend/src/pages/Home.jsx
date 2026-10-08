@@ -198,19 +198,108 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── SEÇÃO SOBRE / VISÃO ─────────────────────────────────── */}
+      {/* ── SEÇÃO HISTÓRIA NA FOTOGRAFIA ───────────────────────── */}
+      <section id="historia">
+        <div className="history-container reveal">
+          <div className="history-header">
+            <span className="section-eyebrow">TRAJETÓRIA & HISTÓRIA</span>
+            <h2 className="section-title">
+              UMA HISTÓRIA ESCRITA ATRAVÉS DE <em>LENTES & MEMÓRIAS</em>
+            </h2>
+          </div>
+
+          <div className="history-text-grid">
+            <p className="history-paragraph">
+              <strong>[CONTEXTO HISTÓRICO MOCKADO]</strong> A paixão pelo registro documental nasceu da busca constante por eternizar a atmosfera e os sentimentos que preenchem cada ambiente. Ao longo dos anos, construí um acervo focado na verdade de cada gesto.
+            </p>
+            <p className="history-paragraph">
+              Com experiência consolidada em coberturas de solenidades corporativas, festivais culturais e retratos autorais, cada etapa da trajetória refinou o olhar para antecipar momentos espontâneos com precisão técnica.
+            </p>
+          </div>
+
+          <div className="history-timeline">
+            <div className="timeline-card">
+              <span className="timeline-year">2014</span>
+              <h3 className="timeline-title">PRIMEIROS PASSOS</h3>
+              <p className="timeline-desc">Estudo de luz natural e ensaios autorais focados em retrato emotivo.</p>
+            </div>
+            <div className="timeline-card">
+              <span className="timeline-year">2018</span>
+              <h3 className="timeline-title">GRANDES EVENTOS</h3>
+              <p className="timeline-desc">Expansão para solenidades, convenções corporativas e espetáculos cênicos.</p>
+            </div>
+            <div className="timeline-card">
+              <span className="timeline-year">2022</span>
+              <h3 className="timeline-title">ASSINATURA VISUAL</h3>
+              <p className="timeline-desc">Consolidação do tratamento pastel mineral e acervo em alta resolução.</p>
+            </div>
+            <div className="timeline-card">
+              <span className="timeline-year">2026</span>
+              <h3 className="timeline-title">PROJETOS ATUAIS</h3>
+              <p className="timeline-desc">Cobertura documental de âmbito nacional e acervo digital autoral.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SEÇÃO SOBRE O FOTÓGRAFO ────────────────────────────── */}
+      <section id="sobre-fotografo">
+        <div className="photographer-container reveal">
+          <div className="photographer-portrait-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80"
+              alt="Isaías Natanael — Fotógrafo"
+            />
+            <div className="photographer-badge">
+              <span className="badge-name">ISAÍAS NATANAEL</span>
+              <span className="badge-role">Fotógrafo Documental & Diretor Criativo</span>
+            </div>
+          </div>
+
+          <div className="photographer-info">
+            <span className="section-eyebrow">SOBRE O FOTÓGRAFO</span>
+            <h2 className="photographer-title">
+              OLHAR SENSÍVEL E <em>ATUAÇÃO DISCRETA</em>
+            </h2>
+
+            <p className="photographer-bio">
+              <strong>[CONTEÚDO SOBRE O FOTÓGRAFO - MOCKADO PARA EDITAR DEPOIS]</strong>
+            </p>
+            <p className="photographer-bio">
+              Olá! Sou Isaías Natanael. Minha missão é registrar pessoas, instituições e acontecimentos com autenticidade, capturando a energia singular de cada momento. Atuo com postura silenciosa e observadora para que os convidados e participantes fiquem totalmente à vontade diante da câmera.
+            </p>
+
+            <div className="photographer-details-grid">
+              <div className="detail-box">
+                <span className="detail-label">BASE</span>
+                <span className="detail-value">Porto Alegre / RS</span>
+              </div>
+              <div className="detail-box">
+                <span className="detail-label">ATENDIMENTO</span>
+                <span className="detail-value">Todo o Brasil</span>
+              </div>
+              <div className="detail-box">
+                <span className="detail-label">ESTILO</span>
+                <span className="detail-value">Documental & Autoral</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SEÇÃO SOBRE / FILOSOFIA & TÉCNICA ───────────────────── */}
       <section id="sobre">
         <div className="philosophy-container reveal">
-          <span className="section-eyebrow">VISÃO & CONCEITO</span>
+          <span className="section-eyebrow">FILOSOFIA & TÉCNICA</span>
           
           <h2 className="philosophy-quote">
-            “Não fotografo apenas o evento, mas a <span>energia singular</span> que conecta pessoas e ambientes.”
+            A essência do registro documental traduzida em <span>fundamentos visuais</span>.
           </h2>
           
           <div className="divider-line" />
           
           <p className="philosophy-text">
-            Com uma abordagem autoral e contemporânea, cada cobertura fotográfica é conduzida com atenção à iluminação, aos gestos espontâneos e à narrativa de cada acontecimento.
+            Cada trabalho é conduzido com sensibilidade artística e rigor técnico, garantindo uma cobertura elegante, discreta e focada no que é duradouro.
           </p>
 
           <div className="pillars-grid">

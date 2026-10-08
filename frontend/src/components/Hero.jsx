@@ -60,20 +60,20 @@ export default function Hero({ photos = [] }) {
 
       <div className="hero-photo-content">
         <div className="hero-header-meta">
-          <span className="meta-badge">FOTOGRAFIA DE EVENTOS & PROJETOS AUTORAIS</span>
+          <span className="meta-badge">OLHAR</span>
         </div>
 
-        <h1 className="hero-display-title">
-          GALERIA DE FOTOS
+        <h1 className="hero-quote-title">
+          “Que minhas fotos nunca terminem em si mesmas, mas conduzam o olhar para <span className="hero-quote-highlight">aquilo que é eterno</span>.”
         </h1>
 
         <p className="hero-subtext">
-          Cobertura documental de eventos corporativos, solenidades, espetáculos e ensaios fotográficos em Porto Alegre e todo o Brasil.
+          Assim, primeiro você conhece o meu olhar — para depois conhecer o meu trabalho. Fotografia documental de eventos corporativos, solenidades, galas e retratos autorais.
         </p>
 
         <div className="hero-bottom-bar">
           <a href="#galeria" className="explore-btn">
-            EXPLORAR GALERIA ↓
+            CONHEÇA O MEU TRABALHO ↓
           </a>
 
           {activePhoto && (
@@ -93,3 +93,4 @@ export default function Hero({ photos = [] }) {
     </section>
   );
 }
+
