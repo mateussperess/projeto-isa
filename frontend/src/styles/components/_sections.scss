@@ -169,6 +169,15 @@
     letter-spacing: 0.04em;
     color: $brand-cream;
     line-height: 1.3;
+    margin-bottom: 6px;
+  }
+
+  .photo-subtitle {
+    font-family: $font-body;
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba($brand-cream, 0.82);
+    line-height: 1.45;
     margin-bottom: 12px;
   }
 
@@ -814,10 +823,28 @@
       color: $brand-cream;
       margin-top: 4px;
     }
+
+    .lightbox-legenda {
+      font-family: $font-body;
+      font-size: 13.5px;
+      font-weight: 400;
+      color: $brand-terracotta;
+      margin-top: 6px;
+    }
+
+    .lightbox-desc {
+      font-family: $font-body;
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.6;
+      color: rgba($brand-cream, 0.85);
+      margin-top: 6px;
+      max-width: 640px;
+    }
   }
 }
 
-// ─── RESPONSIVO GERAL ─────────────────────────────────────────────
+// ─── RESPONSIVO GERAL & MOBILE ADAPTATIONS ───────────────────────
 @media (max-width: $bp-tablet) {
   #galeria, #sobre, #experiencia, #contato {
     padding: 70px 40px;
@@ -826,6 +853,159 @@
 
 @media (max-width: $bp-mobile) {
   #galeria, #sobre, #experiencia, #contato {
-    padding: 50px 20px;
+    padding: 48px 16px;
+  }
+
+  .gallery-header-bar {
+    margin-bottom: 24px;
+    gap: 16px;
+  }
+
+  /* Barra de Filtros com Scroll Horizontal no Mobile */
+  .gallery-filter-tabs {
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .filter-btn {
+      flex-shrink: 0;
+      white-space: nowrap;
+      padding: 8px 16px;
+      font-size: 10px;
+    }
+  }
+
+  /* Cards da Galeria no Mobile (Visibilidade dos textos e acoes sem necessitar hover) */
+  .photo-gallery-card {
+    margin-bottom: 16px;
+
+    .photo-overlay {
+      opacity: 1;
+      background: linear-gradient(
+        to top,
+        rgba($brand-dark, 0.94) 0%,
+        rgba($brand-dark, 0.45) 60%,
+        transparent 100%
+      );
+      padding: 16px;
+    }
+
+    .photo-title {
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .photo-subtitle {
+      font-size: 12px;
+      margin-bottom: 10px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .photo-actions {
+      gap: 8px;
+      flex-wrap: wrap;
+
+      .photo-view-btn, .photo-detail-btn {
+        font-size: 9px;
+        padding: 6px 12px;
+        min-height: 32px;
+        display: inline-flex;
+        align-items: center;
+      }
+    }
+  }
+
+  /* Modal Lightbox Adaptado para Mobile */
+  .lightbox-backdrop {
+    padding: 12px 10px;
+  }
+
+  .lightbox-close {
+    top: 12px;
+    right: 12px;
+    font-size: 16px;
+    padding: 6px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .lightbox-counter {
+    top: 18px;
+    left: 14px;
+    font-size: 11px;
+  }
+
+  .lightbox-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+    background: rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.2);
+    z-index: 20;
+
+    &.left {
+      left: 6px;
+    }
+    &.right {
+      right: 6px;
+    }
+  }
+
+  .lightbox-content {
+    max-height: 90vh;
+    width: 100%;
+
+    .lightbox-img {
+      max-height: 52vh;
+      width: 100%;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+
+    .lightbox-caption {
+      margin-top: 12px;
+      padding: 0 6px;
+      width: 100%;
+
+      .lightbox-tag {
+        font-size: 9px;
+        letter-spacing: 0.15em;
+      }
+
+      .lightbox-title {
+        font-size: 16px;
+        line-height: 1.25;
+        margin-top: 2px;
+      }
+
+      .lightbox-legenda {
+        font-size: 12px;
+        margin-top: 4px;
+      }
+
+      .lightbox-desc {
+        font-size: 12px;
+        line-height: 1.5;
+        margin-top: 4px;
+        max-height: 90px;
+        overflow-y: auto;
+        padding-right: 4px;
+      }
+    }
   }
 }

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { getImageUrl } from "../utils/imageUrl";
 
 const DEFAULT_HERO_PHOTOS = [
   {
@@ -24,10 +25,12 @@ const DEFAULT_HERO_PHOTOS = [
 ];
 
 export default function Hero({ photos = [] }) {
-  // Se fotos foram fornecidas do backend Django, usamos elas no banner
-  const slidesToUse = photos.length > 0
-    ? photos.map((ev) => ({
-        url: ev.capa || ev.src || ev.url,
+  // Limita a 8 fotos do banco de dados para o banner inicial (O Olhar)
+  const slicedPhotos = photos.slice(0, 8);
+  
+  const slidesToUse = slicedPhotos.length > 0
+    ? slicedPhotos.map((ev) => ({
+        url: getImageUrl(ev.capa || ev.src || ev.url || ev.imagem),
         title: ev.titulo || ev.title || "Fotografia de Eventos",
         category: ev.categoria?.nome || ev.category || "Acervo Isaías Natanael"
       }))

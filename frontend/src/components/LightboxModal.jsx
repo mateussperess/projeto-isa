@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function LightboxModal({
   isOpen,
@@ -7,6 +7,9 @@ export default function LightboxModal({
   currentIndex = 0,
   onSelectIndex,
 }) {
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (!isOpen) return;
@@ -43,8 +46,39 @@ export default function LightboxModal({
     onSelectIndex((currentIndex + 1) % photos.length);
   };
 
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd || !hasMultiple) return;
+    const distance = touchStart - touchEnd;
+    const isSwipeLeft = distance > 40;
+    const isSwipeRight = distance < -40;
+
+    if (isSwipeLeft) {
+      onSelectIndex((currentIndex + 1) % photos.length);
+    } else if (isSwipeRight) {
+      onSelectIndex((currentIndex - 1 + photos.length) % photos.length);
+    }
+
+    setTouchStart(0);
+    setTouchEnd(0);
+  };
+
   return (
-    <div className="lightbox-backdrop" onClick={onClose}>
+    <div
+      className="lightbox-backdrop"
+      onClick={onClose}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       {/* Botão de Fechar */}
       <button className="lightbox-close" onClick={onClose} aria-label="Fechar">
         ✕
@@ -89,6 +123,12 @@ export default function LightboxModal({
           )}
           {currentPhoto.title && (
             <h3 className="lightbox-title">{currentPhoto.title}</h3>
+          )}
+          {currentPhoto.legenda && (
+            <p className="lightbox-legenda">{currentPhoto.legenda}</p>
+          )}
+          {currentPhoto.description && (
+            <p className="lightbox-desc">{currentPhoto.description}</p>
           )}
         </div>
       </div>

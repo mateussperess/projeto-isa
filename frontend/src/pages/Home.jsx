@@ -6,73 +6,6 @@ import Hero from "../components/Hero";
 import PhotoMasonryGrid from "../components/PhotoMasonryGrid";
 import LightboxModal from "../components/LightboxModal";
 
-// Fotografias selecionadas em alta definição (acervo inicial de galeria)
-const GALERIA_FOTOS_DEFAULT = [
-  {
-    id: 1,
-    title: "Convenção Anual & Gala Corporativa",
-    category: "Corporativo",
-    capa: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=900&q=75",
-    categoria: { slug: "corporativo", nome: "Corporativo" },
-  },
-  {
-    id: 2,
-    title: "Entre Luzes e Sombras — Retrato Autoral",
-    category: "Retratos",
-    capa: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=75",
-    categoria: { slug: "retratos", nome: "Retratos" },
-  },
-  {
-    id: 3,
-    title: "Festival Cultural & Iluminação Cênica",
-    category: "Galas & Shows",
-    capa: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=900&q=75",
-    categoria: { slug: "shows", nome: "Galas & Shows" },
-  },
-  {
-    id: 4,
-    title: "Celebração ao Entardecer na Serra",
-    category: "Celebrações",
-    capa: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=75",
-    categoria: { slug: "celebracoes", nome: "Celebrações" },
-  },
-  {
-    id: 5,
-    title: "Solenidade de Formatura & Baile",
-    category: "Eventos Sociais",
-    capa: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=900&q=75",
-    categoria: { slug: "eventos", nome: "Eventos Sociais" },
-  },
-  {
-    id: 6,
-    title: "Contornos Naturais — Fine Art",
-    category: "Fine Art",
-    capa: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=75",
-    categoria: { slug: "fineart", nome: "Fine Art" },
-  },
-  {
-    id: 7,
-    title: "Bruma Matinal na Serra Gaúcha",
-    category: "Fine Art",
-    capa: "https://images.unsplash.com/photo-1470240731273-7821a6eeb6bd?auto=format&fit=crop&w=900&q=75",
-    categoria: { slug: "fineart", nome: "Fine Art" },
-  },
-  {
-    id: 8,
-    title: "Simpósio Internacional de Inovação",
-    category: "Corporativo",
-    capa: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=900&q=75",
-    categoria: { slug: "corporativo", nome: "Corporativo" },
-  },
-  {
-    id: 9,
-    title: "Espetáculo de Dança & Movimento",
-    category: "Galas & Shows",
-    capa: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=900&q=75",
-    categoria: { slug: "shows", nome: "Galas & Shows" },
-  }
-];
-
 const METODOLOGIA_STEPS = [
   {
     num: "01.",
@@ -99,6 +32,7 @@ const METODOLOGIA_STEPS = [
 export default function Home() {
   const [eventosBackend, setEventosBackend] = useState([]);
   const [categoriasBackend, setCategoriasBackend] = useState([]);
+  const [fotosBackend, setFotosBackend] = useState([]);
   const [filtro, setFiltro] = useState("todos");
   
   // Estado para o Lightbox Carousel
@@ -119,38 +53,47 @@ export default function Home() {
       .get("/categorias/")
       .then((res) => setCategoriasBackend(res.data))
       .catch(() => setCategoriasBackend([]));
+
+    api
+      .get("/fotos/")
+      .then((res) => setFotosBackend(res.data))
+      .catch(() => setFotosBackend([]));
   }, []);
 
-  // Lista de fotografias ativas
-  const fotosGerais = eventosBackend.length > 0
-    ? eventosBackend.map((ev) => ({
-        id: ev.id,
-        title: ev.titulo,
-        src: ev.capa,
-        category: ev.categoria?.nome || "Evento",
-        categoria: ev.categoria || { slug: "eventos", nome: "Eventos" },
+  // Lista de fotografias ativas vindas exclusivamente do banco de dados (API)
+  const fotosGerais = fotosBackend.length > 0
+    ? fotosBackend.map((f) => ({
+        id: f.id,
+        eventoId: f.evento_id,
+        title: f.evento_titulo || "Fotografia",
+        legenda: f.legenda || "",
+        description: f.evento_descricao || "",
+        src: f.imagem,
+        category: f.categoria?.nome || "Fotografia",
+        categoria: f.categoria || { slug: "outros", nome: "Outros" },
       }))
-    : GALERIA_FOTOS_DEFAULT;
+    : eventosBackend.map((ev) => ({
+        id: ev.id,
+        eventoId: ev.id,
+        title: ev.titulo,
+        legenda: "",
+        description: ev.descricao || "",
+        src: ev.capa,
+        category: ev.categoria?.nome || "Fotografia",
+        categoria: ev.categoria || { slug: "outros", nome: "Outros" },
+      }));
 
-  // Abas de filtro
+  // Abas de filtro 100% dinâmicas vindas estritamente da API de categorias cadastradas no banco de dados
   const abasFiltro = [
     { slug: "todos", nome: "Todas as Fotos" },
-    ...(categoriasBackend.length > 0
-      ? categoriasBackend.map((c) => ({ slug: c.slug, nome: c.nome }))
-      : [
-          { slug: "corporativo", nome: "Corporativo" },
-          { slug: "shows", nome: "Galas & Shows" },
-          { slug: "retratos", nome: "Retratos" },
-          { slug: "celebracoes", nome: "Celebrações" },
-          { slug: "fineart", nome: "Fine Art" },
-        ]),
+    ...categoriasBackend.map((c) => ({ slug: c.slug, nome: c.nome })),
   ];
 
-  // Filtrar fotos
+  // Filtrar fotos pela categoria selecionada
   const fotosFiltradas = fotosGerais.filter((foto) => {
     if (filtro === "todos") return true;
-    const catSlug = (foto.categoria?.slug || foto.category || "").toLowerCase();
-    return catSlug.includes(filtro);
+    const catSlug = (foto.categoria?.slug || "").toLowerCase();
+    return catSlug === filtro.toLowerCase();
   });
 
   // Abrir foto no lightbox
